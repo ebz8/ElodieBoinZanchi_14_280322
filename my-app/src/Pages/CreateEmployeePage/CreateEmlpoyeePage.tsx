@@ -1,4 +1,4 @@
-import PageContainer from "../../containers/PageContainer"
+import PageContainer from "../../containers/PageContainer/PageContainer"
 
 function CreateEmployeePage() {
   return (

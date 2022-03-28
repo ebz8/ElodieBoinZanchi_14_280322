@@ -1,9 +1,11 @@
-import PageContainer from "../../containers/PageContainer"
+import PageContainer from "../../containers/PageContainer/PageContainer"
 
 function CurrentEmployeePage() {
   return (
     <PageContainer>
-        <div>Current Employee</div>
+        <div>
+          
+        </div>
     </PageContainer>
   )
 }

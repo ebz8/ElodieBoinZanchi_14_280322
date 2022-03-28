@@ -1,4 +1,5 @@
-import Header from "../components/Header/Header"
+import Header from "../../components/Header/Header"
+import MainNav from "../../components/MainNav/MainNav"
 
 // import { useEffect } from "react"
 
@@ -14,6 +15,7 @@ function PageContainer({children}: any) {
   return (
     <>
         <Header />
+        <MainNav />
         {/* {loading || loadingUser ? <Loader/> */}
         <main>{children}</main>
         {/* } */}

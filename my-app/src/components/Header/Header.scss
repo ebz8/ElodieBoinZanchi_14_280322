@@ -1,0 +1,19 @@
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0 4rem 0;
+
+    p {
+        font-weight: bold;
+    }
+
+    .name {
+        text-transform: uppercase;
+    }
+
+    .logo {
+        width: 3rem;
+    }
+
+}
