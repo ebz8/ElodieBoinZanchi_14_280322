@@ -1,6 +1,6 @@
 import PageContainer from "../../containers/PageContainer/PageContainer"
 
-function CurrentEmployeePage() {
+function EmployeesPage() {
   return (
     <PageContainer>
         <div>
@@ -10,4 +10,4 @@ function CurrentEmployeePage() {
   )
 }
 
-export default CurrentEmployeePage
+export default EmployeesPage

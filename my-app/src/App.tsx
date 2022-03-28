@@ -3,7 +3,7 @@ import React from "react"
 import "./assets/style/base.scss"
 import "./assets/style/reset.scss"
 import CreateEmployeePage from "./Pages/CreateEmployeePage/CreateEmlpoyeePage"
-import CurrentEmployeePage from "./Pages/CurrentEmployeePage/CurrentEmployeePage"
+import EmployeesPage from "./Pages/EmployeesPage/EmployeesPage"
 import ErrorsPage from "./Pages/ErrorsPage/ErrorsPage"
 
 import { Routes, Route } from "react-router-dom"
@@ -15,7 +15,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/create-employee" element={<CreateEmployeePage />} />
-        <Route path="/employees" element={<CurrentEmployeePage />} />
+        <Route path="/employees" element={<EmployeesPage />} />
         <Route path="/*" element={<ErrorsPage />} />
       </Routes>
     </div>
