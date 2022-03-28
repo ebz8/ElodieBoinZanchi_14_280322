@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom"
 
 function MainNav() {
   return (
-    <div className="main-nav">
+    <nav className="main-nav">
       <NavLink
         to="/create-employee"
         className={({ isActive }) => {
@@ -20,7 +20,7 @@ function MainNav() {
       >
         Current Employees
       </NavLink>
-    </div>
+    </nav>
   )
 }
 
