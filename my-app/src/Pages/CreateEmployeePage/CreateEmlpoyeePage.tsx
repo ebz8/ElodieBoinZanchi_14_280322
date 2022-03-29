@@ -1,9 +1,10 @@
+import EmployeeForm from "../../components/EmployeeForm/EmployeeForm"
 import PageContainer from "../../containers/PageContainer/PageContainer"
 
 function CreateEmployeePage() {
   return (
     <PageContainer>
-        <div className="hello">hello</div>
+        <EmployeeForm />
     </PageContainer>
   )
 }
