@@ -3,8 +3,23 @@
 body {
     font-family: 'Roboto', sans-serif;
     background-color: $neutralLight;
+    color: $neutralDark;
 }
 
 .App {
     padding: 1rem;
+}
+
+.main-btn {
+    width: fit-content;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0;
+    background-color: $mainColor;
+    color: $neutralLight;
+    font-weight: bold;
+    border: none;
+
+    &:hover {
+        background-color: $secondaryColor;
+    }
 }

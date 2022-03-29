@@ -1,9 +1,74 @@
-.employee-form {
-    display: flex;
-    flex-flow: column wrap;
-    gap: .5rem;
+@import "../../assets/style/mixins.scss";
 
-    .address {
-        background-color: white;
+.employee-form {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 0.8rem;
+
+  // GENERAL
+  .form-group {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+  }
+
+  .fields {
+    display: flex;
+    align-items: flex-end;
+    max-width: rem(400);
+    align-self: flex-end;
+    flex-grow: 1;
+
+    label {
+      min-width: 6rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
     }
+
+    input,
+    select {
+      flex-grow: 1;
+      background: transparent;
+      border: none;
+      border-bottom: $mainColor solid 1px;
+      font-size: 1.2rem;
+      color: $mainColor;
+    }
+  }
+
+  .form-error {
+    font-size: 0.8rem;
+    font-style: italic;
+  }
+
+  .main-btn {
+      margin-left: 6rem;
+      margin-top: 1.5rem;
+  }
+
+  // DATE PICKERS
+  .react-datepicker__input-container {
+    display: flex;
+  }
+
+  // ADDRESS BLOCK
+  .address {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    padding: .5rem 1rem 1rem 1rem;
+    margin: 1rem 0;
+    gap: 0.8rem;
+    background-color: white;
+
+    .fields {
+        width: rem(400);
+    }
+
+    .zipCode {
+      input {
+        max-width: 6rem;
+      }
+    }
+  }
 }
