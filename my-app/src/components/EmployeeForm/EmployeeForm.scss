@@ -1,0 +1,9 @@
+.employee-form {
+    display: flex;
+    flex-flow: column wrap;
+    gap: .5rem;
+
+    .address {
+        background-color: white;
+    }
+}
