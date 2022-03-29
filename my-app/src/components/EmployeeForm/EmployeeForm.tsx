@@ -1,22 +1,25 @@
-import { useForm, SubmitHandler } from "react-hook-form"
+import { useForm, SubmitHandler, Controller } from "react-hook-form"
+import DatePicker from "react-datepicker"
+import "react-datepicker/dist/react-datepicker.css"
+// SubmitHandlet : use as type
 
 type FormValues = {
-    firstName: string;
-    lastName: string;
-    birthDate: string;
-    startDate: string;
-    // Address
-    street: string;
-    city: string;
-    state: string;
-    zipCode: number;
-    department: string;
-  };
+  firstName: string
+  lastName: string
+  birthDate: Date
+  startDate: Date
+  street: string
+  city: string
+  state: string
+  zipCode: number
+  department: string
+}
 
 export default function EmployeeForm() {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm<FormValues>()
   const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data)
@@ -33,15 +36,29 @@ export default function EmployeeForm() {
         placeholder="Last name"
         {...register("lastName", { required: true, maxLength: 100 })}
       />
-      <input
-        type="datetime"
-        placeholder="Date of Birth"
-        {...register("birthDate", {})}
+      <Controller
+        name="birthDate"
+        control={control}
+        defaultValue={undefined}
+        render={({ field }) => (
+          <DatePicker
+            onChange={(e) => field.onChange(e)}
+            selected={field.value}
+            placeholderText="Birth Date"
+          />
+        )}
       />
-      <input
-        type="datetime"
-        placeholder="Start Date"
-        {...register("startDate", {})}
+      <Controller
+        name="startDate"
+        control={control}
+        defaultValue={undefined}
+        render={({ field }) => (
+          <DatePicker
+            onChange={(e) => field.onChange(e)}
+            selected={field.value}
+            placeholderText="Start Date"
+          />
+        )}
       />
       <input type="text" placeholder="Street" {...register("street", {})} />
       <input type="text" placeholder="City" {...register("city", {})} />
