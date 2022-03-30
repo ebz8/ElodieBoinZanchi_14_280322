@@ -11,6 +11,7 @@ body {
 }
 
 .main-btn {
+    cursor: pointer;
     width: fit-content;
     padding: 0.5rem 1.5rem;
     border-radius: 0;
@@ -18,8 +19,14 @@ body {
     color: $neutralLight;
     font-weight: bold;
     border: none;
+    transition: all .3s ease-in-out;
 
     &:hover {
         background-color: $secondaryColor;
+        color: white;
     }
+}
+
+input:focus-visible {
+    outline: 2px solid $mainColor;
 }

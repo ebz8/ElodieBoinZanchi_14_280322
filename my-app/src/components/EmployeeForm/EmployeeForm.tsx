@@ -107,7 +107,8 @@ export default function EmployeeForm() {
       />
 
       {/* Address block */}
-      <div className="address">
+      <fieldset className="address">
+        <legend>Address</legend>
         <div className="form-group street">
           <div className="fields">
             <label htmlFor="street">Street</label>
@@ -152,7 +153,7 @@ export default function EmployeeForm() {
             <div className="form-error">{errors.zipCode.message}</div>
           )}
         </div>
-      </div>
+      </fieldset>
 
       <div className="form-group department">
         <div className="fields">
