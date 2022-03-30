@@ -1,6 +1,9 @@
 import "./EmployeeForm.scss"
 import "react-datepicker/dist/react-datepicker.css"
 
+import states from "../../data/states"
+import departments from "../../data/departments"
+
 import { useForm, SubmitHandler, Controller } from "react-hook-form"
 import DatePicker from "react-datepicker"
 
@@ -133,10 +136,11 @@ export default function EmployeeForm() {
           <div className="fields">
             <label htmlFor="state">State</label>
             <select {...register("state", {})}>
-              <option value="Alabama ">Alabama </option>
-              <option value=" Alaska "> Alaska </option>
-              <option value=" American Samoa "> American Samoa </option>
-              <option value=" Arizona"> Arizona</option>
+              {states.map((state) => (
+                <option key={state.abbreviation} value={state.abbreviation}>
+                  {state.name}
+                </option>
+              ))}
             </select>
           </div>
           {errors.state && (
@@ -159,11 +163,11 @@ export default function EmployeeForm() {
         <div className="fields">
           <label htmlFor="department">Department</label>
           <select {...register("department", {})}>
-            <option value="Sales ">Sales </option>
-            <option value=" Marketing "> Marketing </option>
-            <option value=" Engineering "> Engineering </option>
-            <option value=" Human Resources "> Human Resources </option>
-            <option value=" Legal"> Legal</option>
+            {departments.map((dep, index) => (
+              <option key={index} value={dep}>
+                {dep}
+              </option>
+            ))}
           </select>
         </div>
         {errors.department && (
