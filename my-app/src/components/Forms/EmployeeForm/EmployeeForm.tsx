@@ -6,8 +6,8 @@ import departments from "../../../data/departments"
 
 import { useForm, SubmitHandler, Controller } from "react-hook-form"
 import DatePicker from "react-datepicker"
-import  {registerLocale, setDefaultLocale}  from  "react-datepicker"
-import fr from 'date-fns/locale/fr'
+// import  {registerLocale, setDefaultLocale}  from  "react-datepicker"
+// import fr from 'date-fns/locale/fr'
 
 
 type FormValues = {
@@ -23,8 +23,8 @@ type FormValues = {
 }
 
 export default function EmployeeForm() {
-  registerLocale('fr', fr)
-  setDefaultLocale('fr')
+  // registerLocale('fr', fr)
+  // setDefaultLocale('fr')
 
   const {
     register,

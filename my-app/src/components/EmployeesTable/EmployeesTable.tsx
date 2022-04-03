@@ -19,24 +19,24 @@ function EmployeesTable() {
     {
       firstName: "Michael",
       lastName: "Scott",
-      birthDate: "28/10/1960",
-      startDate: "02/01/2022",
+      birthDate: "16/08/1962",
+      startDate: "02/01/2002",
       department: "Sales",
-      street: "Example",
+      street: "1725 Slough Avenue",
       city: "Scranton",
-      state: "IL",
-      zipCode: "17",
+      state: "PA",
+      zipCode: "16",
     },
     {
       firstName: "Oscar",
       lastName: "Martinez",
-      birthDate: "28/08/1980",
+      birthDate: "28/08/1960",
       startDate: "02/01/2002",
-      department: "Sales",
-      street: "Example",
+      department: "Legal",
+      street: "1901 Mulberry St",
       city: "Scranton",
-      state: "IL",
-      zipCode: "17",
+      state: "PA",
+      zipCode: "16",
     },
   ]
 
@@ -126,21 +126,21 @@ function EmployeesTable() {
       <tbody {...getTableBodyProps()}>
         {rows.map((row) => {
           prepareRow(row)
+          
           return (
             <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => {
+              {row.cells.map((cell, index) => {
                 return (
                   <td
                     {...cell.getCellProps()}
                     style={{
                       padding: "10px",
                       border: "solid 1px gray",
-                      background: "papayawhip"
                     }}
                   >
                     {cell.render("Cell")}
                   </td>
-                );
+                )
               })}
             </tr>
           )

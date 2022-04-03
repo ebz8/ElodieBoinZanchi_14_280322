@@ -2,9 +2,9 @@ import React from "react"
 
 import "./assets/style/base.scss"
 import "./assets/style/reset.scss"
-import CreateEmployeePage from "./Pages/CreateEmployeePage/CreateEmlpoyeePage"
-import EmployeesPage from "./Pages/EmployeesPage/EmployeesPage"
-import ErrorsPage from "./Pages/ErrorsPage/ErrorsPage"
+import CreateEmployeePage from "./pages/CreateEmployeePage/CreateEmlpoyeePage"
+import EmployeesPage from "./pages/EmployeesPage/EmployeesPage"
+import ErrorsPage from "./pages/ErrorsPage/ErrorsPage"
 
 import { Routes, Route } from "react-router-dom"
 
