@@ -1,33 +1,53 @@
 import "./EmployeeForm.scss"
 import "react-datepicker/dist/react-datepicker.css"
 
-import states from "../../data/states"
-import departments from "../../data/departments"
+import states from "../../../data/states"
+import departments from "../../../data/departments"
 
 import { useForm, SubmitHandler, Controller } from "react-hook-form"
 import DatePicker from "react-datepicker"
+import  {registerLocale, setDefaultLocale}  from  "react-datepicker"
+import fr from 'date-fns/locale/fr'
+
 
 type FormValues = {
   firstName: string
   lastName: string
-  birthDate: Date
-  startDate: Date
+  birthDate: Date | null
+  startDate: Date | null
   street: string
   city: string
   state: string
-  zipCode: number
+  zipCode: number | null
   department: string
 }
 
 export default function EmployeeForm() {
+  registerLocale('fr', fr)
+  setDefaultLocale('fr')
+
   const {
     register,
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<FormValues>()
-  const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data)
-  console.log(errors)
+  } = useForm<FormValues>({
+    // defaultValues: {
+    //   firstName: " ",
+    //   lastName: " ",
+    //   birthDate: null,
+    //   startDate: null,
+    //   street: "",
+    //   city: " ",
+    //   state: " ",
+    //   zipCode: null,
+    //   department: " ",
+    // },
+  })
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    console.log(data)
+    data.birthDate && console.log(data.birthDate.toLocaleDateString())
+  }
 
   return (
     <form className="employee-form" onSubmit={handleSubmit(onSubmit)}>
@@ -36,6 +56,7 @@ export default function EmployeeForm() {
           <label htmlFor="firstName">First Name</label>
           <input
             type="text"
+            aria-invalid={errors.firstName ? "true" : "false"}
             {...register("firstName", {
               required: "Please enter a first name.",
               minLength: {
@@ -55,6 +76,7 @@ export default function EmployeeForm() {
           <label htmlFor="lastName">Last Name</label>
           <input
             type="text"
+            aria-invalid={errors.lastName ? "true" : "false"}
             {...register("lastName", {
               required: "Please enter a last name.",
               minLength: {
@@ -80,6 +102,9 @@ export default function EmployeeForm() {
               <DatePicker
                 onChange={(e) => field.onChange(e)}
                 selected={field.value}
+                dateFormat="dd/MM/yyyy"
+                // required
+                // aria-invalid={errors.birthDate ? "true" : "false"}
               />
             </div>
             {errors.birthDate && (
@@ -115,27 +140,29 @@ export default function EmployeeForm() {
         <div className="form-group street">
           <div className="fields">
             <label htmlFor="street">Street</label>
-            <input type="text" {...register("street", {})} />
+            <input
+              aria-invalid={errors.street ? "true" : "false"}
+              type="text"
+              {...register("street", { required : true})}
+            />
           </div>
-          {errors.street && (
-            <div className="form-error">{errors.street.message}</div>
-          )}
         </div>
 
         <div className="form-group city">
           <div className="fields">
             <label htmlFor="city">City</label>
-            <input type="text" {...register("city", {})} />
+            <input
+              aria-invalid={errors.city ? "true" : "false"}
+              type="text"
+              {...register("city", {required : true})}
+            />
           </div>
-          {errors.city && (
-            <div className="form-error">{errors.city.message}</div>
-          )}
         </div>
 
         <div className="form-group state">
           <div className="fields">
             <label htmlFor="state">State</label>
-            <select {...register("state", {})}>
+            <select {...register("state", {required : true})}>
               {states.map((state) => (
                 <option key={state.abbreviation} value={state.abbreviation}>
                   {state.name}
@@ -143,26 +170,29 @@ export default function EmployeeForm() {
               ))}
             </select>
           </div>
-          {errors.state && (
-            <div className="form-error">{errors.state.message}</div>
-          )}
         </div>
 
         <div className="form-group zipCode">
           <div className="fields">
             <label htmlFor="zipCode">Zip Code</label>
-            <input type="number" {...register("zipCode", {})} />
+            <input
+              aria-invalid={errors.zipCode ? "true" : "false"}
+              type="number"
+              {...register("zipCode", {required : true})}
+            />
           </div>
-          {errors.zipCode && (
-            <div className="form-error">{errors.zipCode.message}</div>
-          )}
         </div>
       </fieldset>
+      {errors.street || errors.city || errors.state || errors.zipCode ? (
+        <div className="form-error">Please enter a valid address.</div>
+      ) : (
+        " "
+      )}
 
       <div className="form-group department">
         <div className="fields">
           <label htmlFor="department">Department</label>
-          <select {...register("department", {})}>
+          <select {...register("department", {required: "Please select a department."})}>
             {departments.map((dep, index) => (
               <option key={index} value={dep}>
                 {dep}

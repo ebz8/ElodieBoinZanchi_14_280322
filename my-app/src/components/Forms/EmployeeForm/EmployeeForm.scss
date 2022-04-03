@@ -1,4 +1,4 @@
-@import "../../assets/style/mixins.scss";
+@import "../../../assets/style/mixins.scss";
 
 .employee-form {
   display: flex;
@@ -39,6 +39,7 @@
   .form-error {
     font-size: 0.8rem;
     font-style: italic;
+    margin-top: -1rem;
   }
 
   .main-btn {
