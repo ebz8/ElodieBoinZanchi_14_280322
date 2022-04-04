@@ -12,7 +12,6 @@ import DatePicker from "react-datepicker"
 import { useAtom } from "jotai"
 // import { atomWithImmer } from 'jotai/immer'
 import { EmployeesAtom } from "../../../store/store"
-import { useEffect } from "react"
 
 type FormValues = {
   firstName: string
@@ -29,41 +28,35 @@ type FormValues = {
 export default function EmployeeForm() {
   // registerLocale('fr', fr)
   // setDefaultLocale('fr')
-
   const [employees, setEmployees] = useAtom(EmployeesAtom)
+  employees && console.log(employees)
 
   const {
     register,
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<FormValues>({
-    defaultValues: {
-      firstName: "Michael",
-      lastName: "Scott",
-      birthDate: null,
-      startDate: null,
-      street: "",
-      city: " ",
-      state: " ",
-      zipCode: null,
-      department: " ",
-    },
-  })
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-    data && setEmployees((employeesList) => [...employeesList, {
-      firstName: data.firstName,
-      lastName: data.lastName,
-      birthDate: data.birthDate?.toLocaleDateString(),
-      startDate: data.startDate?.toLocaleDateString(),
-      department: data.department,
-      street: data.street,
-      city: data.city,
-      state: data.state,
-      zipCode: data.zipCode,
-     }])
-  }
+  } = useForm<FormValues>()
 
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    data &&
+      // setEmployees((employeesList) => void(employeesList.push(data)))
+      setEmployees((employeesList) => [
+        ...employeesList,
+        {
+          firstName: data.firstName,
+          lastName: data.lastName,
+          birthDate: data.birthDate?.toLocaleDateString(),
+          startDate: data.startDate?.toLocaleDateString(),
+          department: data.department,
+          street: data.street,
+          city: data.city,
+          state: data.state,
+          zipCode: data.zipCode,
+        },
+      ])
+  }
+  
   return (
     <form className="employee-form" onSubmit={handleSubmit(onSubmit)}>
       <div className="form-group firstName">
