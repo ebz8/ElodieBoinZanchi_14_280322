@@ -1,6 +1,10 @@
 import "./EmployeesTable.scss"
 import { useMemo, useState, useEffect } from "react"
 import { useTable, TableOptions, Column } from "react-table"
+import { atom, useAtom } from 'jotai'
+import { EmployeesAtom } from "../../store/store"
+
+
 
 // type CustomColumns = {
 //   firstName: string
@@ -15,30 +19,17 @@ import { useTable, TableOptions, Column } from "react-table"
 // }
 
 function EmployeesTable() {
-  const data = [
-    {
-      firstName: "Michael",
-      lastName: "Scott",
-      birthDate: "16/08/1962",
-      startDate: "02/01/2002",
-      department: "Sales",
-      street: "1725 Slough Avenue",
-      city: "Scranton",
-      state: "PA",
-      zipCode: "16",
-    },
-    {
-      firstName: "Oscar",
-      lastName: "Martinez",
-      birthDate: "28/08/1960",
-      startDate: "02/01/2002",
-      department: "Legal",
-      street: "1901 Mulberry St",
-      city: "Scranton",
-      state: "PA",
-      zipCode: "16",
-    },
-  ]
+  
+  // const [currentEmployees, setcurrentEmployees] = useAtom()
+  const [employees, setEmployees] = useAtom(EmployeesAtom)
+  console.log(employees)
+
+      const [data, setData] = useState<any[]>([])
+
+    useEffect(() => {
+      employees && setData(employees)
+    }, [employees])
+
 
   const columns: Column<{
     firstName: string
@@ -96,11 +87,6 @@ function EmployeesTable() {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     tableInstance
 
-  //   const [data, setData] = useState([])
-
-  //   useEffect(() => {
-  //     setData(currentEmployees)
-  //   }, [currentEmployees])
 
   return (
     <table {...getTableProps()}>

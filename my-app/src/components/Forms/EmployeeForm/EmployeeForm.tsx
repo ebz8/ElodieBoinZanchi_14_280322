@@ -9,6 +9,10 @@ import DatePicker from "react-datepicker"
 // import  {registerLocale, setDefaultLocale}  from  "react-datepicker"
 // import fr from 'date-fns/locale/fr'
 
+import { useAtom } from "jotai"
+// import { atomWithImmer } from 'jotai/immer'
+import { EmployeesAtom } from "../../../store/store"
+import { useEffect } from "react"
 
 type FormValues = {
   firstName: string
@@ -26,27 +30,38 @@ export default function EmployeeForm() {
   // registerLocale('fr', fr)
   // setDefaultLocale('fr')
 
+  const [employees, setEmployees] = useAtom(EmployeesAtom)
+
   const {
     register,
     handleSubmit,
     control,
     formState: { errors },
   } = useForm<FormValues>({
-    // defaultValues: {
-    //   firstName: " ",
-    //   lastName: " ",
-    //   birthDate: null,
-    //   startDate: null,
-    //   street: "",
-    //   city: " ",
-    //   state: " ",
-    //   zipCode: null,
-    //   department: " ",
-    // },
+    defaultValues: {
+      firstName: "Michael",
+      lastName: "Scott",
+      birthDate: null,
+      startDate: null,
+      street: "",
+      city: " ",
+      state: " ",
+      zipCode: null,
+      department: " ",
+    },
   })
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log(data)
-    data.birthDate && console.log(data.birthDate.toLocaleDateString())
+    data && setEmployees((employeesList) => [...employeesList, {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      birthDate: data.birthDate?.toLocaleDateString(),
+      startDate: data.startDate?.toLocaleDateString(),
+      department: data.department,
+      street: data.street,
+      city: data.city,
+      state: data.state,
+      zipCode: data.zipCode,
+     }])
   }
 
   return (
@@ -143,7 +158,7 @@ export default function EmployeeForm() {
             <input
               aria-invalid={errors.street ? "true" : "false"}
               type="text"
-              {...register("street", { required : true})}
+              {...register("street", { required: true })}
             />
           </div>
         </div>
@@ -154,7 +169,7 @@ export default function EmployeeForm() {
             <input
               aria-invalid={errors.city ? "true" : "false"}
               type="text"
-              {...register("city", {required : true})}
+              {...register("city", { required: true })}
             />
           </div>
         </div>
@@ -162,7 +177,7 @@ export default function EmployeeForm() {
         <div className="form-group state">
           <div className="fields">
             <label htmlFor="state">State</label>
-            <select {...register("state", {required : true})}>
+            <select {...register("state", { required: true })}>
               {states.map((state) => (
                 <option key={state.abbreviation} value={state.abbreviation}>
                   {state.name}
@@ -178,7 +193,7 @@ export default function EmployeeForm() {
             <input
               aria-invalid={errors.zipCode ? "true" : "false"}
               type="number"
-              {...register("zipCode", {required : true})}
+              {...register("zipCode", { required: true })}
             />
           </div>
         </div>
@@ -192,7 +207,11 @@ export default function EmployeeForm() {
       <div className="form-group department">
         <div className="fields">
           <label htmlFor="department">Department</label>
-          <select {...register("department", {required: "Please select a department."})}>
+          <select
+            {...register("department", {
+              required: "Please select a department.",
+            })}
+          >
             {departments.map((dep, index) => (
               <option key={index} value={dep}>
                 {dep}

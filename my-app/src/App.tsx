@@ -8,17 +8,18 @@ import ErrorsPage from "./pages/ErrorsPage/ErrorsPage"
 
 import { Routes, Route } from "react-router-dom"
 
+
 // import { Counter } from "./features/counter/Counter"
 
 function App() {
   return (
-    <div className="App">
-      <Routes>
-        <Route path="/create-employee" element={<CreateEmployeePage />} />
-        <Route path="/employees" element={<EmployeesPage />} />
-        <Route path="/*" element={<ErrorsPage />} />
-      </Routes>
-    </div>
+      <div className="App">
+        <Routes>
+          <Route path="/create-employee" element={<CreateEmployeePage />} />
+          <Route path="/employees" element={<EmployeesPage />} />
+          <Route path="/*" element={<ErrorsPage />} />
+        </Routes>
+      </div>
   )
 }
 
