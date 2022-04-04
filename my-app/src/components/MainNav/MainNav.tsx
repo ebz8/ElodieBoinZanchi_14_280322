@@ -13,7 +13,7 @@ function MainNav() {
         Create Employee
       </NavLink>
       <NavLink
-        to="/employees"
+        to="/"
         className={({ isActive }) => {
           return isActive ? "--actif" : ""
         }}
