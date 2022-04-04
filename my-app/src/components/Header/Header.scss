@@ -1,17 +1,21 @@
+@import "../../assets/style/mixins.scss";
+
 .header-titles {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 1rem 0 4rem 0;
+    margin: .5rem 0 4rem 0;
 
     p {
         font-weight: 500;
         font-size: .8rem;
+        color: $mainColor;
     }
 
     .name {
         text-transform: uppercase;
-        font-size: .8rem;
+        font-size: .7rem;
+        margin-left: 8rem;
     }
 
     .logo {

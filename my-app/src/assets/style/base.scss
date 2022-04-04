@@ -6,6 +6,11 @@ body {
     color: $neutralDark;
 }
 
+main {
+    display: flex;
+    justify-content: center;
+}
+
 .App {
     padding: 1rem;
 }
@@ -13,17 +18,20 @@ body {
 .main-btn {
     cursor: pointer;
     width: fit-content;
-    padding: 0.5rem 1.5rem;
+    padding: 0.5rem 1rem;
     border-radius: 0;
-    background-color: $mainColor;
-    color: $neutralLight;
+    background-color: $secondaryColor;
+    color: $mainColor;
     font-weight: bold;
+    font-size: .8rem;
     border: none;
-    transition: all .3s ease-in-out;
+    transition: all .2s ease-in-out;
+    border-radius: 100%;
+    aspect-ratio: 1;
 
     &:hover {
-        background-color: $secondaryColor;
-        color: white;
+        background-color: $mainColor;
+        color: $neutralLight;
     }
 }
 

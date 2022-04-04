@@ -4,6 +4,7 @@
   display: flex;
   flex-flow: column wrap;
   gap: 0.8rem;
+  max-width: fit-content;
 
   // GENERAL
   .form-group {
@@ -18,6 +19,13 @@
     max-width: rem(400);
     align-self: flex-end;
     flex-grow: 1;
+    border-bottom: $neutralDark solid 1px;
+
+
+    &:hover {
+      background-color: $secondaryColor;
+      border-bottom: transparent solid 1px;
+    }
 
     label {
       min-width: 6rem;
@@ -27,12 +35,16 @@
 
     input,
     select {
+      height: 2.5rem;
       flex-grow: 1;
       background: transparent;
       border: none;
-      border-bottom: $mainColor solid 1px;
       font-size: 1.2rem;
       color: $mainColor;
+
+      option {
+        background: $neutralLight;
+      }
     }
   }
 
@@ -43,8 +55,8 @@
   }
 
   .main-btn {
-      margin-left: 6rem;
-      margin-top: 1.5rem;
+    margin-top: 1rem;
+    align-self: flex-end;
   }
 
   // DATE PICKERS
@@ -57,25 +69,25 @@
     display: flex;
     flex-direction: column;
     width: fit-content;
-    padding: .5rem 1rem 1rem 1rem;
+    padding: 0.5rem 1rem 1rem 1rem;
     margin: 1rem 0;
     gap: 0.8rem;
     background-color: white;
     border: $mainColor 1px solid;
 
     legend {
-        font-size: 0.8rem;
-        text-transform: uppercase;
+      font-size: 0.8rem;
+      text-transform: uppercase;
     }
 
     .fields {
-        width: rem(400);
+      width: rem(400);
     }
 
-    .zipCode {
-      input {
-        max-width: 6rem;
-      }
-    }
+    // .zipCode {
+    //   input {
+    //     max-width: 6rem;
+    //   }
+    // }
   }
 }
