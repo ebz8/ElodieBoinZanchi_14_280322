@@ -1,7 +1,7 @@
 import "./EmployeesTable.scss"
 
 import { useMemo } from "react"
-import { useTable, TableOptions, Column } from "react-table"
+import { useTable } from "react-table"
 
 import { EmployeesAtom } from "../../store/store"
 import { useAtom } from "jotai"

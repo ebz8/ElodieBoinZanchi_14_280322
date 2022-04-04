@@ -10,7 +10,6 @@ import DatePicker from "react-datepicker"
 // import fr from 'date-fns/locale/fr'
 
 import { useAtom } from "jotai"
-// import { atomWithImmer } from 'jotai/immer'
 import { EmployeesAtom } from "../../../store/store"
 
 type FormValues = {
@@ -25,11 +24,12 @@ type FormValues = {
   department: string
 }
 
+
 export default function EmployeeForm() {
   // registerLocale('fr', fr)
   // setDefaultLocale('fr')
   const [employees, setEmployees] = useAtom(EmployeesAtom)
-  employees && console.log(employees)
+  employees && console.log("employees", employees)
 
   const {
     register,

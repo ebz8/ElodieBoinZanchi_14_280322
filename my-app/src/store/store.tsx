@@ -1,15 +1,12 @@
-import { atom } from 'jotai'
-// import { atomWithImmer } from 'jotai/immer'
-// import {atomWithStorage} from "jotai/utils"
+import { atomWithStorage } from "jotai/utils"
 
 // authentication
-export const userAtom = atom<object>({
-    type: "",
-    email: "",
-    password: "",
-    status: "",
+export const userAtom = atomWithStorage<object>("user", {
+  type: "",
+  email: "",
+  password: "",
+  status: "",
 })
 
 // employees array
-export const EmployeesAtom = atom<object[]>([])
-// export const EmployeesImmerAtom = atomWithImmer<object[]>([])
+export const EmployeesAtom = atomWithStorage<object[]>("employees", [])
