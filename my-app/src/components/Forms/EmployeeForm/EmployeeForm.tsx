@@ -24,7 +24,6 @@ type FormValues = {
   department: string
 }
 
-
 export default function EmployeeForm() {
   // registerLocale('fr', fr)
   // setDefaultLocale('fr')
@@ -56,13 +55,14 @@ export default function EmployeeForm() {
         },
       ])
   }
-  
+
   return (
     <form className="employee-form" onSubmit={handleSubmit(onSubmit)}>
       <div className="form-group firstName">
         <div className="fields">
           <label htmlFor="firstName">First Name</label>
           <input
+            id="firstName"
             type="text"
             aria-invalid={errors.firstName ? "true" : "false"}
             {...register("firstName", {
@@ -83,6 +83,7 @@ export default function EmployeeForm() {
         <div className="fields">
           <label htmlFor="lastName">Last Name</label>
           <input
+            id="lastName"
             type="text"
             aria-invalid={errors.lastName ? "true" : "false"}
             {...register("lastName", {
@@ -111,6 +112,7 @@ export default function EmployeeForm() {
                 onChange={(e) => field.onChange(e)}
                 selected={field.value}
                 dateFormat="dd/MM/yyyy"
+                id="birthDate"
                 // required
                 // aria-invalid={errors.birthDate ? "true" : "false"}
               />
@@ -133,6 +135,7 @@ export default function EmployeeForm() {
               <DatePicker
                 onChange={(e) => field.onChange(e)}
                 selected={field.value}
+                id="startDate"
               />
             </div>
             {errors.startDate && (
@@ -149,6 +152,7 @@ export default function EmployeeForm() {
           <div className="fields">
             <label htmlFor="street">Street</label>
             <input
+              id="street"
               aria-invalid={errors.street ? "true" : "false"}
               type="text"
               {...register("street", { required: true })}
@@ -160,6 +164,7 @@ export default function EmployeeForm() {
           <div className="fields">
             <label htmlFor="city">City</label>
             <input
+              id="city"
               aria-invalid={errors.city ? "true" : "false"}
               type="text"
               {...register("city", { required: true })}
@@ -184,6 +189,7 @@ export default function EmployeeForm() {
           <div className="fields">
             <label htmlFor="zipCode">Zip Code</label>
             <input
+              id="zipCode"
               aria-invalid={errors.zipCode ? "true" : "false"}
               type="number"
               {...register("zipCode", { required: true })}
