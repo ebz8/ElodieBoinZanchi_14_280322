@@ -1,7 +1,4 @@
 import "./EmployeesTable.scss"
-import { ReactComponent as SortIcon } from "../../assets/img/icons/sort-solid.svg"
-import { ReactComponent as SortIconDown } from "../../assets/img/icons/sort-down-solid.svg"
-import { ReactComponent as SortIconUp } from "../../assets/img/icons/sort-up-solid.svg"
 
 import { useMemo } from "react"
 import {
@@ -11,18 +8,18 @@ import {
   usePagination,
 } from "react-table"
 
+import TableContainer from "../../containers/TableContainer/TableContainer"
+import TableBody from "../Table/TableBody/TableBody"
+import TableHeader from "../Table/TableHeader/TableHeader"
+import TableFooter from "../Table/TableFooter/TableFooter"
+
 import { EmployeesAtom } from "../../store/store"
 import { useAtom } from "jotai"
 
-import TableContainer from "../../containers/TableContainer/TableContainer"
-import TableBody from "./TableBody/TableBody"
-import TableHeader from "./TableHeader/TableHeader"
-import TableFooter from "./TableFooter/TableFooter"
 
 function EmployeesTable() {
   // get employees list from Jotai store
   const [data] = useAtom(EmployeesAtom)
-
   // config react-table
   const columns = useMemo(
     () => [
