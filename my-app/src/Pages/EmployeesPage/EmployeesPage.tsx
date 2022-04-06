@@ -6,7 +6,7 @@ function EmployeesPage() {
   return (
     <PageContainer>
         <div>
-          <TableFilter />
+          {/* <TableFilter /> */}
           <EmployeesTable />
         </div>
     </PageContainer>

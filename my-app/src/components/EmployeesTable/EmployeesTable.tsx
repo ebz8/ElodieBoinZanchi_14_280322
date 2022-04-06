@@ -1,11 +1,11 @@
 import "./EmployeesTable.scss"
 
 import { useMemo } from "react"
-import { useTable } from "react-table"
+import { useGlobalFilter, useTable } from "react-table"
 
 import { EmployeesAtom } from "../../store/store"
 import { useAtom } from "jotai"
-
+import TableFilter from "./TableFilter/TableFilter"
 
 function EmployeesTable() {
   // get employees list from Jotai store
@@ -53,51 +53,71 @@ function EmployeesTable() {
     ],
     []
   )
-  const tableInstance = useTable({ columns, data })
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    tableInstance
+  const tableInstance = useTable({ columns, data }, useGlobalFilter)
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+    preGlobalFilteredRows,
+    setGlobalFilter,
+    state: { globalFilter },
+
+  } = tableInstance
 
   return (
-    <table {...getTableProps()}>
-      <thead>
-        {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps()}
-                style={{
-                  borderBottom: "solid 3px black",
-                  color: "black",
-                  fontWeight: "bold",
-                }}>
-                {column.render("Header")}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row) => {
-          prepareRow(row)
-
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map((cell, index) => {
-                return (
-                  <td {...cell.getCellProps()}
-                    style={{
-                      padding: "10px",
-                      border: "solid 1px gray",
-                    }}>
-                    {cell.render("Cell")}
-                  </td>
-                )
-              })}
+    <>
+      <TableFilter
+        preGlobalFilteredRows={preGlobalFilteredRows}
+        setGlobalFilter={setGlobalFilter}
+        globalFilter={globalFilter}
+      />
+      <table {...getTableProps()}>
+        <thead>
+          {headerGroups.map((headerGroup) => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => (
+                <th
+                  {...column.getHeaderProps()}
+                  style={{
+                    borderBottom: "solid 3px black",
+                    color: "black",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {column.render("Header")}
+                </th>
+              ))}
             </tr>
-          )
-        })}
-      </tbody>
-    </table>
+          ))}
+        </thead>
+
+        <tbody {...getTableBodyProps()}>
+          {rows.map((row) => {
+            prepareRow(row)
+
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map((cell, index) => {
+                  return (
+                    <td
+                      {...cell.getCellProps()}
+                      style={{
+                        padding: "10px",
+                        border: "solid 1px gray",
+                      }}
+                    >
+                      {cell.render("Cell")}
+                    </td>
+                  )
+                })}
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
+    </>
   )
 }
 
