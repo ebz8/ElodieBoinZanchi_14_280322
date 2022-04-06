@@ -1,4 +1,7 @@
+import "./TableFilter.scss"
+
 import { useForm, SubmitHandler } from "react-hook-form"
+
 
 export default function TableFilter({
   setGlobalFilter,
@@ -12,7 +15,8 @@ export default function TableFilter({
     setGlobalFilter(data.search)
 
   return (
-    <form onChange={handleSubmit(onChange)}>
+    <form onChange={handleSubmit(onChange)} className="table-filter">
+      {/* <label>Search: </label> */}
       <input type="search" placeholder="Search" {...register("search")} />
     </form>
   )

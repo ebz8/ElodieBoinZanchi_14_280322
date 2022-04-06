@@ -13,7 +13,7 @@ function TableBody({
     <table {...getTableProps()} className="table-body">
       <thead>
         {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
+          <tr {...headerGroup.getHeaderGroupProps()} className="table-columns-headers">
             {headerGroup.headers.map((column) => (
               <th
                 {...column.getHeaderProps(column.getSortByToggleProps())}
@@ -46,19 +46,9 @@ function TableBody({
           prepareRow(row)
 
           return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map((cell, index) => {
-                return (
-                  <td
-                    {...cell.getCellProps()}
-                    style={{
-                      padding: "10px",
-                      border: "solid 1px gray",
-                    }}
-                  >
-                    {cell.render("Cell")}
-                  </td>
-                )
+            <tr {...row.getRowProps()} className="table-row">
+              {row.cells.map((cell) => {
+                return <td {...cell.getCellProps()} className="table-cell">{cell.render("Cell")}</td>
               })}
             </tr>
           )

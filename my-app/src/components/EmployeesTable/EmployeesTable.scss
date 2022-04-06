@@ -1,5 +1,9 @@
+@import "../../assets/style/mixins.scss";
+
 .employees-table {
+  
   .table-header {
+    font-size: 1.1rem;
     display: flex;
     justify-content: space-between;
 
@@ -10,8 +14,31 @@
   }
 
   .table-body {
+    font-size: .9rem;
     width: 90vw;
     margin: 1rem 0;
+    border-collapse: collapse;
+    color: black;
+
+    .table-columns-headers {
+      height: 2rem;
+    }
+
+    .table-row {
+      background: $oddLight;
+
+      &:nth-child(odd) {
+        background: $oddDark;
+      }
+
+      &:hover {
+        background: $secondaryColor;
+      }
+
+      .table-cell {
+        padding: 0.5rem;
+      }
+    }
   }
 
   .table-footer {

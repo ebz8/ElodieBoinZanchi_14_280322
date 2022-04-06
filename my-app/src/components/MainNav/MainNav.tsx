@@ -5,7 +5,7 @@ function MainNav() {
   return (
     <nav className="main-nav">
       <NavLink
-        to="/create-employee"
+        to="/"
         className={({ isActive }) => {
           return isActive ? "--actif" : ""
         }}
@@ -13,7 +13,7 @@ function MainNav() {
         Create Employee
       </NavLink>
       <NavLink
-        to="/"
+        to="/employees"
         className={({ isActive }) => {
           return isActive ? "--actif" : ""
         }}
