@@ -11,6 +11,10 @@ import DatePicker from "react-datepicker"
 
 import { useAtom } from "jotai"
 import { EmployeesAtom } from "../../../store/store"
+import Input from "../Input"
+import DateSelect from "../DateSelect"
+import Select from "../Select"
+import Button from "../../Button/Button"
 
 type FormValues = {
   firstName: string
@@ -58,174 +62,92 @@ export default function EmployeeForm() {
 
   return (
     <form className="employee-form" onSubmit={handleSubmit(onSubmit)}>
-      <div className="form-group firstName">
-        <div className="fields">
-          <label htmlFor="firstName">First Name</label>
-          <input
-            id="firstName"
-            type="text"
-            aria-invalid={errors.firstName ? "true" : "false"}
-            {...register("firstName", {
-              required: "Please enter a first name.",
-              minLength: {
-                value: 2,
-                message: "Please enter 2 characters min.",
-              },
-            })}
-          />
-        </div>
-        {errors.firstName && (
-          <div className="form-error">{errors.firstName.message}</div>
-        )}
-      </div>
-
-      <div className="form-group lastName">
-        <div className="fields">
-          <label htmlFor="lastName">Last Name</label>
-          <input
-            id="lastName"
-            type="text"
-            aria-invalid={errors.lastName ? "true" : "false"}
-            {...register("lastName", {
-              required: "Please enter a last name.",
-              minLength: {
-                value: 2,
-                message: "Please enter 2 characters min.",
-              },
-            })}
-          />
-        </div>
-        {errors.lastName && (
-          <div className="form-error">{errors.lastName.message}</div>
-        )}
-      </div>
-
-      <Controller
-        name="birthDate"
-        control={control}
-        defaultValue={undefined}
-        render={({ field }) => (
-          <div className="form-group birthDate">
-            <div className="fields">
-              <label htmlFor="birthDate">Birth Date</label>
-              <DatePicker
-                onChange={(e) => field.onChange(e)}
-                selected={field.value}
-                dateFormat="dd/MM/yyyy"
-                id="birthDate"
-                // required
-                // aria-invalid={errors.birthDate ? "true" : "false"}
-              />
-            </div>
-            {errors.birthDate && (
-              <div className="form-error">{errors.birthDate.message}</div>
-            )}
-          </div>
-        )}
+      <Input
+        name="First Name"
+        accessName="firstName"
+        type="text"
+        requiredMessage="Please enter a first name."
+        errors={errors.firstName}
+        register={register}
       />
 
-      <Controller
-        name="startDate"
+      <Input
+        name="Last Name"
+        accessName="lastName"
+        type="text"
+        requiredMessage="Please enter a last name."
+        errors={errors.lastName}
+        register={register}
+      />
+
+      <DateSelect
+        name="Birth Date"
+        accessName="birthDate"
         control={control}
-        defaultValue={undefined}
-        render={({ field }) => (
-          <div className="form-group startDate">
-            <div className="fields">
-              <label htmlFor="startDate">Start Date</label>
-              <DatePicker
-                onChange={(e) => field.onChange(e)}
-                selected={field.value}
-                id="startDate"
-              />
-            </div>
-            {errors.startDate && (
-              <div className="form-error">{errors.startDate.message}</div>
-            )}
-          </div>
-        )}
+        errors={errors.birthDate}
+      />
+
+      <DateSelect
+        name="Start Date"
+        accessName="startDate"
+        control={control}
+        errors={errors.startDate}
       />
 
       {/* Address block */}
       <fieldset className="address">
         <legend>Address</legend>
-        <div className="form-group street">
-          <div className="fields">
-            <label htmlFor="street">Street</label>
-            <input
-              id="street"
-              aria-invalid={errors.street ? "true" : "false"}
-              type="text"
-              {...register("street", { required: true })}
-            />
-          </div>
-        </div>
+        <Input
+          name="Street"
+          accessName="street"
+          type="text"
+          requiredMessage="Please enter a street."
+          errors={errors.street}
+          register={register}
+        />
 
-        <div className="form-group city">
-          <div className="fields">
-            <label htmlFor="city">City</label>
-            <input
-              id="city"
-              aria-invalid={errors.city ? "true" : "false"}
-              type="text"
-              {...register("city", { required: true })}
-            />
-          </div>
-        </div>
+        <Input
+          name="City"
+          accessName="city"
+          type="text"
+          requiredMessage="Please enter a city."
+          errors={errors.city}
+          register={register}
+        />
 
-        <div className="form-group state">
-          <div className="fields">
-            <label htmlFor="state">State</label>
-            <select {...register("state", { required: true })}>
-              {states.map((state) => (
-                <option key={state.abbreviation} value={state.abbreviation}>
-                  {state.name}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
+        <Select
+          name="State"
+          accessName="state"
+          data={states}
+          register={register}
+          errors={errors.state}
+        />
 
-        <div className="form-group zipCode">
-          <div className="fields">
-            <label htmlFor="zipCode">Zip Code</label>
-            <input
-              id="zipCode"
-              aria-invalid={errors.zipCode ? "true" : "false"}
-              type="number"
-              {...register("zipCode", { required: true })}
-            />
-          </div>
-        </div>
+        <Input
+          name="Zip Code"
+          accessName="zipCode"
+          type="number"
+          requiredMessage="Please enter a city."
+          errors={errors.zipCode}
+          register={register}
+        />
       </fieldset>
-      {errors.street || errors.city || errors.state || errors.zipCode ? (
+
+      {/* {errors.street || errors.city || errors.state || errors.zipCode ? (
         <div className="form-error">Please enter a valid address.</div>
       ) : (
         " "
-      )}
+      )} */}
 
-      <div className="form-group department">
-        <div className="fields">
-          <label htmlFor="department">Department</label>
-          <select
-            {...register("department", {
-              required: "Please select a department.",
-            })}
-          >
-            {departments.map((dep, index) => (
-              <option key={index} value={dep}>
-                {dep}
-              </option>
-            ))}
-          </select>
-        </div>
-        {errors.department && (
-          <div className="form-error">{errors.department.message}</div>
-        )}
-      </div>
+      <Select
+        name="Department"
+        accessName="department"
+        data={departments}
+        register={register}
+        errors={errors.department}
+      />
 
-      <button className="main-btn" type="submit">
-        Save
-      </button>
+      <Button name="Save" type="submit" />
     </form>
   )
 }
