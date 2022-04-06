@@ -1,6 +1,8 @@
 import { useForm, SubmitHandler } from "react-hook-form"
 
-export default function TableFilter({ setGlobalFilter }) {
+export default function TableFilter({
+  setGlobalFilter,
+}) {
   const { register, handleSubmit } = useForm({ mode: "onTouched" })
 
   type FormValues = {

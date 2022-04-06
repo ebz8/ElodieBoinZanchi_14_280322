@@ -73,7 +73,6 @@ function EmployeesTable() {
     getTableBodyProps,
     headerGroups,
     prepareRow,
-    preGlobalFilteredRows,
     setGlobalFilter,
     rows,
     page,
@@ -83,7 +82,7 @@ function EmployeesTable() {
     canPreviousPage,
     pageOptions,
     setPageSize,
-    state: { pageIndex, globalFilter, pageSize },
+    state: { pageIndex, pageSize },
   } = tableInstance
 
   return (
@@ -91,9 +90,7 @@ function EmployeesTable() {
       <TableHeader
         pageSize={pageSize}
         setPageSize={setPageSize}
-        preGlobalFilteredRows={preGlobalFilteredRows}
         setGlobalFilter={setGlobalFilter}
-        globalFilter={globalFilter}
       />
       <TableBody
         getTableProps={getTableProps}
