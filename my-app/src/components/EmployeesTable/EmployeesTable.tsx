@@ -1,10 +1,17 @@
 import "./EmployeesTable.scss"
 
 import { useMemo } from "react"
-import { useGlobalFilter, useTable } from "react-table"
+import {
+  useGlobalFilter,
+  useTable,
+  useSortBy,
+  usePagination,
+} from "react-table"
 
 import { EmployeesAtom } from "../../store/store"
 import { useAtom } from "jotai"
+
+import TableContainer from "../../containers/TableContainer/TableContainer"
 import TableFilter from "./TableFilter/TableFilter"
 
 function EmployeesTable() {
@@ -53,27 +60,56 @@ function EmployeesTable() {
     ],
     []
   )
-  const tableInstance = useTable({ columns, data }, useGlobalFilter)
+  const tableInstance = useTable(
+    { columns, data },
+    useGlobalFilter,
+    useSortBy,
+    usePagination
+  )
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    rows,
     prepareRow,
     preGlobalFilteredRows,
     setGlobalFilter,
-    state: { globalFilter },
-
+    rows,
+    page,
+    nextPage,
+    canNextPage,
+    previousPage,
+    canPreviousPage,
+    pageOptions,
+    pageCount,
+    setPageSize,
+    state: { pageIndex, globalFilter, pageSize },
   } = tableInstance
 
   return (
-    <>
-      <TableFilter
-        preGlobalFilteredRows={preGlobalFilteredRows}
-        setGlobalFilter={setGlobalFilter}
-        globalFilter={globalFilter}
-      />
-      <table {...getTableProps()}>
+    <TableContainer className="employees-table">
+      <div className="table-header">
+        <div className="table-length">
+          <p>Show</p>
+          <select
+            value={pageSize}
+            onChange={(e) => {
+              setPageSize(Number(e.target.value))
+            }}
+          >
+            {[5, 10, 25, 50, 100].map((pageSize) => (
+              <option key={pageSize} value={pageSize}>
+                {pageSize}
+              </option>
+            ))}
+          </select>
+        </div>
+        <TableFilter
+          preGlobalFilteredRows={preGlobalFilteredRows}
+          setGlobalFilter={setGlobalFilter}
+          globalFilter={globalFilter}
+        />
+      </div>
+      <table {...getTableProps()} className="table-body">
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
@@ -94,7 +130,7 @@ function EmployeesTable() {
         </thead>
 
         <tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
+          {page.map((row) => {
             prepareRow(row)
 
             return (
@@ -117,7 +153,21 @@ function EmployeesTable() {
           })}
         </tbody>
       </table>
-    </>
+      <div className="footer">
+        <span className="index">
+          Showing {pageIndex + 1} / {pageOptions.length} to {page.length} of{" "}
+          {rows.length} entries
+        </span>
+        <div className="controls">
+          <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+            Previous
+          </button>
+          <button onClick={() => nextPage()} disabled={!canNextPage}>
+            Next
+          </button>
+        </div>
+      </div>
+    </TableContainer>
   )
 }
 

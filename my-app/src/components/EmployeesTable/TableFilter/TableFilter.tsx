@@ -1,10 +1,4 @@
-import { useState } from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
-import {
-  useTable,
-  useGlobalFilter,
-  useAsyncDebounce,
-} from 'react-table'
 
 export default function TableFilter({
   preGlobalFilteredRows,
@@ -16,12 +10,9 @@ export default function TableFilter({
     handleSubmit,
   } = useForm({ mode: "onTouched" })
 
-  const [value, setValue] = useState(globalFilter)
-
   type FormValues = {
     [search: string]: any
   }
-
   const onChange: SubmitHandler<FormValues> = (data) => setGlobalFilter(data.search)
 
   return (

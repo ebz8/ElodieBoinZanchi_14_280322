@@ -7,12 +7,12 @@ function TableContainer({children}: any) {
     // state: nombre d'entrée
 
   return (
-    <>
+    <div className="employees-table">
         {/* header */}
         {/* {loading || loadingUser ? <Loader/> */}
-        <main>{children}</main>
+        {children}
         {/* footer */}
-    </>
+    </div>
   )
 }
 

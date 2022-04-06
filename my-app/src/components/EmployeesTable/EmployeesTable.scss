@@ -1,0 +1,11 @@
+.employees-table {
+  .table-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .table-body {
+    margin-top: 1rem;
+    width: 90vw;
+  }
+}
