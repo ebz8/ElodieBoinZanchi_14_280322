@@ -1,4 +1,7 @@
 import "./EmployeesTable.scss"
+import { ReactComponent as SortIcon } from "../../assets/img/icons/sort-solid.svg"
+import { ReactComponent as SortIconDown } from "../../assets/img/icons/sort-down-solid.svg"
+import { ReactComponent as SortIconUp } from "../../assets/img/icons/sort-up-solid.svg"
 
 import { useMemo } from "react"
 import {
@@ -12,7 +15,9 @@ import { EmployeesAtom } from "../../store/store"
 import { useAtom } from "jotai"
 
 import TableContainer from "../../containers/TableContainer/TableContainer"
-import TableFilter from "./TableFilter/TableFilter"
+import TableBody from "./TableBody/TableBody"
+import TableHeader from "./TableHeader/TableHeader"
+import TableFooter from "./TableFooter/TableFooter"
 
 function EmployeesTable() {
   // get employees list from Jotai store
@@ -80,93 +85,36 @@ function EmployeesTable() {
     previousPage,
     canPreviousPage,
     pageOptions,
-    pageCount,
     setPageSize,
     state: { pageIndex, globalFilter, pageSize },
   } = tableInstance
 
   return (
     <TableContainer className="employees-table">
-      <div className="table-header">
-        <div className="table-length">
-          <p>Show</p>
-          <select
-            value={pageSize}
-            onChange={(e) => {
-              setPageSize(Number(e.target.value))
-            }}
-          >
-            {[5, 10, 25, 50, 100].map((pageSize) => (
-              <option key={pageSize} value={pageSize}>
-                {pageSize}
-              </option>
-            ))}
-          </select>
-        </div>
-        <TableFilter
-          preGlobalFilteredRows={preGlobalFilteredRows}
-          setGlobalFilter={setGlobalFilter}
-          globalFilter={globalFilter}
-        />
-      </div>
-      <table {...getTableProps()} className="table-body">
-        <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th
-                  {...column.getHeaderProps()}
-                  style={{
-                    borderBottom: "solid 3px black",
-                    color: "black",
-                    fontWeight: "bold",
-                  }}
-                >
-                  {column.render("Header")}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-
-        <tbody {...getTableBodyProps()}>
-          {page.map((row) => {
-            prepareRow(row)
-
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell, index) => {
-                  return (
-                    <td
-                      {...cell.getCellProps()}
-                      style={{
-                        padding: "10px",
-                        border: "solid 1px gray",
-                      }}
-                    >
-                      {cell.render("Cell")}
-                    </td>
-                  )
-                })}
-              </tr>
-            )
-          })}
-        </tbody>
-      </table>
-      <div className="table-footer">
-        <span className="index">
-          Showing {pageIndex + 1} / {pageOptions.length} to {page.length} of{" "}
-          {rows.length} entries
-        </span>
-        <div className="table-controls">
-          <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-            Previous
-          </button>
-          <button onClick={() => nextPage()} disabled={!canNextPage}>
-            Next
-          </button>
-        </div>
-      </div>
+      <TableHeader
+        pageSize={pageSize}
+        setPageSize={setPageSize}
+        preGlobalFilteredRows={preGlobalFilteredRows}
+        setGlobalFilter={setGlobalFilter}
+        globalFilter={globalFilter}
+      />
+      <TableBody
+        getTableProps={getTableProps}
+        headerGroups={headerGroups}
+        getTableBodyProps={getTableBodyProps}
+        prepareRow={prepareRow}
+        page={page}
+      />
+      <TableFooter
+        pageIndex={pageIndex}
+        pageOptions={pageOptions}
+        rows={rows}
+        page={page}
+        previousPage={previousPage}
+        canPreviousPage={canPreviousPage}
+        nextPage={nextPage}
+        canNextPage={canNextPage}
+      />
     </TableContainer>
   )
 }
