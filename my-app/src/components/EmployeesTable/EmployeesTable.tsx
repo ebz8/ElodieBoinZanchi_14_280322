@@ -153,12 +153,12 @@ function EmployeesTable() {
           })}
         </tbody>
       </table>
-      <div className="footer">
+      <div className="table-footer">
         <span className="index">
           Showing {pageIndex + 1} / {pageOptions.length} to {page.length} of{" "}
           {rows.length} entries
         </span>
-        <div className="controls">
+        <div className="table-controls">
           <button onClick={() => previousPage()} disabled={!canPreviousPage}>
             Previous
           </button>

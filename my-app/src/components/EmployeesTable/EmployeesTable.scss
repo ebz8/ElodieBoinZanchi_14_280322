@@ -2,10 +2,25 @@
   .table-header {
     display: flex;
     justify-content: space-between;
+
+    .table-length {
+      display: flex;
+      gap: 0.5rem;
+    }
   }
 
   .table-body {
-    margin-top: 1rem;
     width: 90vw;
+    margin: 1rem 0;
+  }
+
+  .table-footer {
+    display: flex;
+    justify-content: space-between;
+
+    .table-controls {
+      display: flex;
+      gap: 0.5rem;
+    }
   }
 }
