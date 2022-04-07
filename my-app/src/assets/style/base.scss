@@ -19,22 +19,58 @@ main {
     cursor: pointer;
     width: fit-content;
     padding: 0.5rem 1rem;
-    border-radius: 0;
-    background-color: $secondaryColor;
-    color: $mainColor;
-    font-weight: bold;
-    font-size: .8rem;
-    border: none;
-    transition: all .2s ease-in-out;
-    border-radius: 100%;
     aspect-ratio: 1;
+    background-color: $mainColor;
+    color: $neutralLight;
+    font-size: .8rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 100%;
+    transition: all .1s ease-in-out;
 
     &:hover {
-        background-color: $mainColor;
-        color: $neutralLight;
+        background-color: $secondaryColor;
+        color: $mainColor;
     }
 }
 
-input:focus-visible {
-    outline: 2px solid $mainColor;
+.secondary-btn {
+    width: fit-content;
+    padding: 0.5rem 1rem;
+    background-color: $mainColor;
+    color: $neutralLight;
+    font-weight: bold;
+    font-size: .8rem;
+    border: none;
+    border-radius: 0;
+    transition: all .1s ease-in-out;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $secondaryColor;
+        color: $mainColor;
+    }
+
+    &:disabled {
+        background-color: $neutralLight;
+        color: $mainColor;
+
+        &:hover {
+            cursor: not-allowed;
+            background-color: $neutralLight;
+            color: $mainColor;
+        }
+    }
+}
+
+input, select {
+    background-color: $oddLight;
+    border: none;
+    border-radius: .3rem;
+    padding: .4rem;
+
+    &:focus-visible {
+        outline: 2px solid white;
+    }
+
 }

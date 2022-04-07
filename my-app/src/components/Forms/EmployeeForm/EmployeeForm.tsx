@@ -1,20 +1,16 @@
 import "./EmployeeForm.scss"
-import "react-datepicker/dist/react-datepicker.css"
+
+import Input from "../Input"
+import DateSelect from "../DateSelect"
+import Select from "../Select"
+
+import { useForm, SubmitHandler } from "react-hook-form"
 
 import states from "../../../data/states"
 import departments from "../../../data/departments"
 
-import { useForm, SubmitHandler, Controller } from "react-hook-form"
-import DatePicker from "react-datepicker"
-// import  {registerLocale, setDefaultLocale}  from  "react-datepicker"
-// import fr from 'date-fns/locale/fr'
-
 import { useAtom } from "jotai"
 import { EmployeesAtom } from "../../../store/store"
-import Input from "../Input"
-import DateSelect from "../DateSelect"
-import Select from "../Select"
-import Button from "../../Button/Button"
 
 type FormValues = {
   firstName: string
@@ -147,7 +143,9 @@ export default function EmployeeForm() {
         errors={errors.department}
       />
 
-      <Button name="Save" type="submit" />
+      <button className="main-btn" type="submit">
+        Save
+      </button>
     </form>
   )
 }

@@ -1,9 +1,11 @@
+import "./TableLength.scss"
 
 function TableLength({ pageSize, setPageSize }) {
   return (
     <div className="table-length">
-      <p>Show</p>
+      <label htmlFor="tableLength">Show</label>
       <select
+        id="tableLength"
         value={pageSize}
         onChange={(e) => {
           setPageSize(Number(e.target.value))

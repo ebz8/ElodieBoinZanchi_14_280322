@@ -1,0 +1,23 @@
+@import "../../../assets/style/mixins.scss";
+
+.table-length {
+  display: flex;
+  align-items: center;
+  height: fit-content;
+  font-size: 0.9rem;
+
+  select {
+    &::placeholder {
+      color: grey;
+      font-size: 0.8rem;
+      opacity: 1;
+    }
+
+    &:hover,
+    &:focus {
+      &::placeholder {
+        opacity: 0.5;
+      }
+    }
+  }
+}

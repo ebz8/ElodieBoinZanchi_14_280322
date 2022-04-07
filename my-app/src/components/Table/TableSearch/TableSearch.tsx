@@ -1,9 +1,9 @@
-import "./TableFilter.scss"
+import "./TableSearch.scss"
 
 import { useForm, SubmitHandler } from "react-hook-form"
 
 
-export default function TableFilter({
+export default function TableSearch({
   setGlobalFilter,
 }) {
   const { register, handleSubmit } = useForm({ mode: "onTouched" })

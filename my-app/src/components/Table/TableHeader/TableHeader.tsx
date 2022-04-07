@@ -1,5 +1,5 @@
 import TableLength from "../TableLength/TableLength"
-import TableFilter from "../TableFilter/TableFilter"
+import TableFilter from "../TableSearch/TableSearch"
 
 function TableHeader({
   pageSize,

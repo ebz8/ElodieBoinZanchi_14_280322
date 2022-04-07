@@ -1,0 +1,21 @@
+@import "../../../assets/style/mixins.scss";
+
+.table-filter {
+
+    input {
+        width: 15rem;
+
+        &::placeholder {
+            color: grey;
+            font-size: .8rem;
+            opacity: 0.5;
+        }
+
+        &:hover, &:focus {
+            &::placeholder {
+                opacity: 0.2;
+            }
+        }
+    }
+
+}

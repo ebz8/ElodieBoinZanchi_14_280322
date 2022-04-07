@@ -10,18 +10,21 @@ function TableFooter({
 }) {
   return (
     <div className="table-footer">
+
       <span className="index">
         Showing {pageIndex + 1} / {pageOptions.length} to {page.length} of{" "}
         {rows.length} entries
       </span>
+
       <div className="table-controls">
-        <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+        <button className="secondary-btn" onClick={() => previousPage()} disabled={!canPreviousPage}>
           Previous
         </button>
-        <button onClick={() => nextPage()} disabled={!canNextPage}>
+        <button className="secondary-btn" onClick={() => nextPage()} disabled={!canNextPage}>
           Next
         </button>
       </div>
+
     </div>
   )
 }
