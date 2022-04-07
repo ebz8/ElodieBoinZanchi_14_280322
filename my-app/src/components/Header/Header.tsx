@@ -9,7 +9,7 @@ function Header() {
       <div className="header-titles">
         <p className="title">HRnet</p>
         <p className="name">Wealth Health</p>
-        <img className="logo" src={logo} alt="Wealth Health Logo" />
+        <img className="logo" src={logo} alt="Wealth Health Logo" loading="lazy"/>
       </div>
       <MainNav />
     </header>
