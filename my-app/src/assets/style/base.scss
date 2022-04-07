@@ -63,6 +63,16 @@ main {
     }
 }
 
+.third-btn {
+    border: none;
+    color: $mainColor;
+
+    &:hover {
+        cursor: pointer;
+        background: $neutralLight;
+    }
+}
+
 input, select {
     background-color: $oddLight;
     border: none;

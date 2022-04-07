@@ -82,6 +82,7 @@ function EmployeesTable() {
     gotoPage,
     pageOptions,
     setPageSize,
+    pageCount,
     state: { pageIndex, pageSize },
   } = tableInstance
 
@@ -111,6 +112,7 @@ function EmployeesTable() {
             nextPage={nextPage}
             canNextPage={canNextPage}
             gotoPage={gotoPage}
+            pageCount={pageCount}
           />
         </>
       ) : (
