@@ -1,24 +1,25 @@
 function Input({ errors, register, name, requiredMessage, accessName, type }) {
+
   return (
     <div className={accessName + " form-group"}>
-      <div className="fields">
+      <div className={errors ? "error fields" : "fields"}>
         <label htmlFor={accessName}>{name}</label>
         <input
           id={accessName}
           type={type}
           aria-invalid={errors ? "true" : "false"}
           {...register(accessName, {
-            required: requiredMessage,
-            minLength: {
-              value: 2,
-              message: "Please enter 2 characters min.",
-            },
+            required: true,
           })}
         />
       </div>
-      {errors && <div className="form-error">{errors.message}</div>}
+      {/* {errors && <div className="form-error">{errors.message}</div>} */}
     </div>
   )
 }
 
 export default Input
+
+// export function Input({ register, accessName, ...rest }) {
+//   return <input {...register(accessName)} {...rest} />;
+// }

@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form"
 
 
-function Form() {
+function Form({onSubmit}) {
   return (
-    <div>
+    <form>
       
-    </div>
+    </form>
   )
 }
 

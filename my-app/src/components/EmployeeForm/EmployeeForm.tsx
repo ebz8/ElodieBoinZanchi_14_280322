@@ -1,16 +1,16 @@
 import "./EmployeeForm.scss"
 
-import Input from "../Input"
-import DateSelect from "../DateSelect"
-import Select from "../Select"
+import Input from "../Forms/Input"
+import DateSelect from "../Forms/DateSelect"
+import Select from "../Forms/Select"
 
 import { useForm, SubmitHandler } from "react-hook-form"
 
-import states from "../../../data/states"
-import departments from "../../../data/departments"
+import states from "../../data/states"
+import departments from "../../data/departments"
 
 import { useAtom } from "jotai"
-import { EmployeesAtom } from "../../../store/store"
+import { EmployeesAtom } from "../../store/store"
 
 type FormValues = {
   firstName: string
@@ -39,7 +39,6 @@ export default function EmployeeForm() {
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     data &&
-      // setEmployees((employeesList) => void(employeesList.push(data)))
       setEmployees((employeesList) => [
         ...employeesList,
         {
@@ -114,7 +113,7 @@ export default function EmployeeForm() {
         <Select
           name="State"
           accessName="state"
-          data={states}
+          options={states}
           register={register}
           errors={errors.state}
         />
@@ -123,7 +122,7 @@ export default function EmployeeForm() {
           name="Zip Code"
           accessName="zipCode"
           type="number"
-          requiredMessage="Please enter a city."
+          requiredMessage="Please enter a"
           errors={errors.zipCode}
           register={register}
         />
@@ -138,7 +137,7 @@ export default function EmployeeForm() {
       <Select
         name="Department"
         accessName="department"
-        data={departments}
+        options={departments}
         register={register}
         errors={errors.department}
       />

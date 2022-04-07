@@ -1,4 +1,4 @@
-import EmployeeForm from "../../components/Forms/EmployeeForm/EmployeeForm"
+import EmployeeForm from "../../components/EmployeeForm/EmployeeForm"
 import PageContainer from "../../containers/PageContainer/PageContainer"
 
 function CreateEmployeePage() {

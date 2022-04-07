@@ -1,10 +1,14 @@
-@import "../../../assets/style/mixins.scss";
+@import "../../assets/style/mixins.scss";
 
 .employee-form {
   display: flex;
   flex-flow: column wrap;
   gap: 0.8rem;
   max-width: fit-content;
+
+  :focus-visible {
+    outline: 2px solid $mainColor;
+  }
 
   // GENERAL
   .form-group {
@@ -21,6 +25,17 @@
     flex-grow: 1;
     border-bottom: $neutralDark solid 1px;
 
+    &.error {
+      border-bottom: red solid 2px;
+
+      label {
+        color: red;
+      }
+
+      :focus-visible {
+        outline: 2px solid red;
+      }
+    }
 
     &:hover {
       background-color: $secondaryColor;
@@ -74,6 +89,10 @@
     gap: 0.8rem;
     background-color: white;
     border: none;
+
+    // :focus-visible {
+    //   outline: 2px solid lightgray;
+    // }
 
     legend {
       font-size: 0.8rem;
