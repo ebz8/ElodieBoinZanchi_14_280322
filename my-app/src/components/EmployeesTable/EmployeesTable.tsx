@@ -16,7 +16,6 @@ import TableFooter from "../Table/TableFooter/TableFooter"
 import { EmployeesAtom } from "../../store/store"
 import { useAtom } from "jotai"
 
-
 function EmployeesTable() {
   // get employees list from Jotai store
   const [data] = useAtom(EmployeesAtom)
@@ -80,6 +79,7 @@ function EmployeesTable() {
     canNextPage,
     previousPage,
     canPreviousPage,
+    gotoPage,
     pageOptions,
     setPageSize,
     state: { pageIndex, pageSize },
@@ -87,28 +87,35 @@ function EmployeesTable() {
 
   return (
     <TableContainer className="employees-table">
-      <TableHeader
-        pageSize={pageSize}
-        setPageSize={setPageSize}
-        setGlobalFilter={setGlobalFilter}
-      />
-      <TableBody
-        getTableProps={getTableProps}
-        headerGroups={headerGroups}
-        getTableBodyProps={getTableBodyProps}
-        prepareRow={prepareRow}
-        page={page}
-      />
-      <TableFooter
-        pageIndex={pageIndex}
-        pageOptions={pageOptions}
-        rows={rows}
-        page={page}
-        previousPage={previousPage}
-        canPreviousPage={canPreviousPage}
-        nextPage={nextPage}
-        canNextPage={canNextPage}
-      />
+      {data ? (
+        <>
+          <TableHeader
+            pageSize={pageSize}
+            setPageSize={setPageSize}
+            setGlobalFilter={setGlobalFilter}
+          />
+          <TableBody
+            getTableProps={getTableProps}
+            headerGroups={headerGroups}
+            getTableBodyProps={getTableBodyProps}
+            prepareRow={prepareRow}
+            page={page}
+          />
+          <TableFooter
+            pageIndex={pageIndex}
+            pageOptions={pageOptions}
+            rows={rows}
+            page={page}
+            previousPage={previousPage}
+            canPreviousPage={canPreviousPage}
+            nextPage={nextPage}
+            canNextPage={canNextPage}
+            gotoPage={gotoPage}
+          />
+        </>
+      ) : (
+        <p>No employee to display</p>
+      )}
     </TableContainer>
   )
 }

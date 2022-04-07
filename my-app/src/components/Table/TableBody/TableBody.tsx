@@ -17,11 +17,6 @@ function TableBody({
             {headerGroup.headers.map((column) => (
               <th
                 {...column.getHeaderProps(column.getSortByToggleProps())}
-                style={{
-                  borderBottom: "solid 3px black",
-                  color: "black",
-                  fontWeight: "bold",
-                }}
               >
                 {column.render("Header")}
                 <span>
