@@ -15,7 +15,7 @@ function TableFooter({
   return (
     <div className="table-footer">
       <span className="index">
-        Showing {pageIndex + 1} / {pageOptions.length} to {page.length} of{" "}
+        Showing {pageIndex + 1} / {pageOptions.length} to {page.index} of{" "}
         {rows.length} entries
       </span>
 
@@ -27,6 +27,7 @@ function TableFooter({
         pageOptions={pageOptions}
         gotoPage={gotoPage}
         pageCount={pageCount}
+        pageIndex={pageIndex}
       />
     </div>
   )

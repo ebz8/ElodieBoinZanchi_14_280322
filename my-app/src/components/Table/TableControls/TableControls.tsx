@@ -6,6 +6,7 @@ function TableControls({
   pageOptions,
   gotoPage,
   pageCount,
+  pageIndex,
 }) {
 
   return (
@@ -25,7 +26,7 @@ function TableControls({
           if (index < 5) {
             return (
               <button
-                className="secondary-btn"
+                className={item === pageIndex ? "secondary-btn --active" : "secondary-btn"}
                 key={item}
                 onClick={() => gotoPage(item)}
               >

@@ -45,6 +45,10 @@ main {
     border-radius: 0;
     transition: all .1s ease-in-out;
 
+    &.--active {
+        background-color: darken($color: $mainColor, $amount: 10);
+    }
+
     &:hover {
         cursor: pointer;
         background-color: $secondaryColor;

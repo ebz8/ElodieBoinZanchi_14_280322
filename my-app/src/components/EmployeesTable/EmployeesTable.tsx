@@ -86,6 +86,7 @@ function EmployeesTable() {
     state: { pageIndex, pageSize },
   } = tableInstance
 
+
   return (
     <TableContainer className="employees-table">
       {data ? (
