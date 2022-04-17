@@ -2,11 +2,11 @@ import "./EmployeesTable.scss"
 
 import { useMemo } from "react"
 import {
-  useGlobalFilter,
   useTable,
+  useGlobalFilter,
   useSortBy,
   usePagination,
-} from "react-table"
+} from "@tanstack/react-table"
 
 import TableContainer from "../../containers/TableContainer/TableContainer"
 import TableBody from "../Table/TableBody/TableBody"
