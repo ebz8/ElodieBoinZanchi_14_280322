@@ -1,0 +1,57 @@
+/* prevent scroll */
+html:has(dialog[open]) {
+  overflow: hidden;
+}
+
+.modal {
+  display: flex;
+  flex-flow: column wrap;
+  min-width: 20ch;
+  max-width: 90ch;
+  border-radius: 4px;
+  border: 1px solid white;
+  transition: opacity 0.5s ease;
+  /* gérer le responsive */
+}
+
+/* pas d'interaction possible avec pointer-events sur none */
+.modal:not([open]) {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.modal::backdrop {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  backdrop-filter: blur(5px);
+  transition: backdrop-filter 0.5s ease;
+}
+
+.modal > form {
+  display: flex;
+  flex-flow: column;
+  gap: 1.5rem;
+}
+
+.modal > form > button {
+  align-self: flex-end;
+  width: 2rem;
+  border-radius: 100%;
+  border: none;
+  aspect-ratio: 1;
+}
+
+.modal > form > button:hover {
+    background-color: grey;
+  }
+
+.modal > form > article {
+  overflow-y: scroll;
+  max-block-size: 100%; /* safari */
+  overscroll-behavior-y: contain;
+  display: grid;
+  justify-items: flex-start;
+}

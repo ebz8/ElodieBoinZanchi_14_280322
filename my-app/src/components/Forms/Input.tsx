@@ -1,5 +1,4 @@
 function Input({ errors, register, name, requiredMessage, accessName, type }) {
-
   return (
     <div className={accessName + " form-group"}>
       <div className={errors ? "error fields" : "fields"}>
