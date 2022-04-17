@@ -1,5 +1,3 @@
-import "./ConfirmModal.scss"
-
 import { Modal } from "@elbaz888/ebz-ui-library"
 
 

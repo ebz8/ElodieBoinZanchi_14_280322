@@ -37,18 +37,17 @@ type FormValues = {
 
 export default function EmployeeForm() {
   const [employees, setEmployees] = useAtom(EmployeesAtom)
-  const { isOpened, isToggled } = useModal()
-  const newEmployee = employees.pop()
+  const { isOpened, toggleModal } = useModal()
 
   const {
     register,
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = useForm<FormValues>()
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    isToggled()
     data &&
       setEmployees((employeesList) => [
         ...employeesList,
@@ -64,6 +63,8 @@ export default function EmployeeForm() {
           zipCode: data.zipCode,
         },
       ])
+      reset()
+      toggleModal()
   }
 
   return (
@@ -140,12 +141,6 @@ export default function EmployeeForm() {
           />
         </fieldset>
 
-        {/* {errors.street || errors.city || errors.state || errors.zipCode ? (
-        <div className="form-error">Please enter a valid address.</div>
-      ) : (
-        " "
-      )} */}
-
         <Select
           name="Department"
           accessName="department"
@@ -158,8 +153,7 @@ export default function EmployeeForm() {
           Save
         </button>
       </form>
-      <ConfirmModal isOpened={isOpened} toggle={isToggled}/>
-      {/* <Modal isOpened={isOpened} onClose={toggleModal} modalContent='Employee created !' /> */}
+      <ConfirmModal isOpened={isOpened} toggle={toggleModal}/>
     </>
   )
 }
