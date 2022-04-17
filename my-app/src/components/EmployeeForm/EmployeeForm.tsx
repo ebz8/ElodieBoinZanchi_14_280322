@@ -15,10 +15,12 @@ import { useAtom } from "jotai"
 import { EmployeesAtom } from "../../store/store"
 
 // MODALE
-import { Modal } from "../Modal/Modal"
-import { useModal } from "../Modal/useModal"
-// import {useModal} from "@elbaz888/ebz-ui-library/dist/hooks/useModal"
-// import ConfirmModal from "../ConfirmModal/ConfirmModal"
+// import { Modal } from "../Modal/Modal"
+// import { useModal } from "../Modal/useModal"
+
+import { useModal } from "@elbaz888/ebz-ui-library"
+import ConfirmModal from "../ConfirmModal/ConfirmModal"
+
 ///////////
 
 type FormValues = {
@@ -34,12 +36,9 @@ type FormValues = {
 }
 
 export default function EmployeeForm() {
-  // registerLocale('fr', fr)
-  // setDefaultLocale('fr')
   const [employees, setEmployees] = useAtom(EmployeesAtom)
-  const { isOpened, toggle } = useModal()
-
-  
+  const { isOpened, isToggled } = useModal()
+  const newEmployee = employees.pop()
 
   const {
     register,
@@ -49,8 +48,7 @@ export default function EmployeeForm() {
   } = useForm<FormValues>()
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    // e.preventDefault()
-    toggle()
+    isToggled()
     data &&
       setEmployees((employeesList) => [
         ...employeesList,
@@ -160,7 +158,8 @@ export default function EmployeeForm() {
           Save
         </button>
       </form>
-      <Modal isOpened={isOpened} onClose={toggle} modalContent="Employee created !" />
+      <ConfirmModal isOpened={isOpened} toggle={isToggled}/>
+      {/* <Modal isOpened={isOpened} onClose={toggleModal} modalContent='Employee created !' /> */}
     </>
   )
 }
