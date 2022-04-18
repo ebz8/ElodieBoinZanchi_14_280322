@@ -11,16 +11,19 @@ function TableFooter({
   canNextPage,
   gotoPage,
   pageCount,
-  pageSize,
 }) {
   return (
     <div className="table-footer">
       {page[0] ? (
-        <span className="index">
-          page {pageIndex + 1} / {pageOptions.length} | showing{" "}
-          {page[0]?.index + 1} to {page[pageSize - 1].index + 1} of{" "}
-          {rows.length} entries
-        </span>
+        <div className="index">
+          <span className="folio">
+            page {pageIndex + 1} / {pageOptions.length}{" "}
+          </span>
+          <span className="entries">
+            showing {page[0]?.index + 1} to {page[page.length -1]?.index +1} of{" "}
+            {rows.length} entries
+          </span>
+        </div>
       ) : (
         <span>No employees to display.</span>
       )}

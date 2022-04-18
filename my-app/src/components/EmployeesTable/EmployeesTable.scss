@@ -49,6 +49,16 @@
     display: flex;
     justify-content: space-between;
 
+    .index {
+      display: flex;
+      gap: 0.5rem;
+      
+      .entries {
+        font-style: italic;
+        padding-left: 0.2rem;
+      }
+    }
+
     .table-controls {
       display: flex;
       gap: 0.5rem;
@@ -59,7 +69,7 @@
         align-items: center;
         width: 2rem;
         aspect-ratio: 1;
-        border-radius: .2rem;
+        border-radius: 0.2rem;
       }
 
       input {
