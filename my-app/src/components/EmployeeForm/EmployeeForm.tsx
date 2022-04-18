@@ -38,7 +38,7 @@ type FormValues = {
 export default function EmployeeForm() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [employees, setEmployees] = useAtom(EmployeesAtom)
-  const { isOpened, toggleModal } = useModal()
+  const { showModal, hideModal, toggleModal } = useModal()
 
   const {
     register,
@@ -66,7 +66,17 @@ export default function EmployeeForm() {
         },
       ])
       // clean inputs
-      reset()
+      reset({
+        firstName: "",
+        lastName: "",
+      }, {
+        keepErrors: true, 
+        keepDirty: true,
+        keepIsSubmitted: false,
+        keepTouched: false,
+        keepIsValid: false,
+        keepSubmitCount: false,
+      })
       // show confirm modal
       toggleModal()
   }
@@ -157,7 +167,7 @@ export default function EmployeeForm() {
           Save
         </button>
       </form>
-      <ConfirmModal isOpened={isOpened} toggle={toggleModal}/>
+      <ConfirmModal isOpened={showModal} onClose={hideModal}/>
     </>
   )
 }
