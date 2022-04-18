@@ -112,6 +112,7 @@ function EmployeesTable() {
             canNextPage={canNextPage}
             gotoPage={gotoPage}
             pageCount={pageCount}
+            pageSize={pageSize}
           />
     </TableContainer>
   )
