@@ -1,4 +1,4 @@
-function Input({ errors, register, name, requiredMessage, accessName, type }) {
+function Input({ errors, register, name, accessName, type, rules }) {
   return (
     <div className={accessName + " form-group"}>
       <div className={errors ? "error fields" : "fields"}>
@@ -7,9 +7,7 @@ function Input({ errors, register, name, requiredMessage, accessName, type }) {
           id={accessName}
           type={type}
           aria-invalid={errors ? "true" : "false"}
-          {...register(accessName, {
-            required: true,
-          })}
+          {...register(accessName, rules)}
         />
       </div>
       {/* {errors && <div className="form-error">{errors.message}</div>} */}

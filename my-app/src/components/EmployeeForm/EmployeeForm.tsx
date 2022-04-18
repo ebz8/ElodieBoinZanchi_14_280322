@@ -78,18 +78,18 @@ export default function EmployeeForm() {
           name="First Name"
           accessName="firstName"
           type="text"
-          requiredMessage="Please enter a first name."
           errors={errors.firstName}
           register={register}
+          rules={{ required: 'Please enter a first name.' }}
         />
 
         <Input
           name="Last Name"
           accessName="lastName"
           type="text"
-          requiredMessage="Please enter a last name."
           errors={errors.lastName}
           register={register}
+          rules={{ required: 'Please enter a last name.' }}
         />
 
         <DateSelect
@@ -113,18 +113,18 @@ export default function EmployeeForm() {
             name="Street"
             accessName="street"
             type="text"
-            requiredMessage="Please enter a street."
             errors={errors.street}
             register={register}
+            rules={{}}
           />
 
           <Input
             name="City"
             accessName="city"
             type="text"
-            requiredMessage="Please enter a city."
             errors={errors.city}
             register={register}
+            rules={{}}
           />
 
           <Select
@@ -139,9 +139,9 @@ export default function EmployeeForm() {
             name="Zip Code"
             accessName="zipCode"
             type="number"
-            requiredMessage="Please enter a"
             errors={errors.zipCode}
             register={register}
+            rules={{}}
           />
         </fieldset>
 
