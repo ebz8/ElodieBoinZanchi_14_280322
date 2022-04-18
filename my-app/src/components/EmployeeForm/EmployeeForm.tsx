@@ -32,7 +32,7 @@ type FormValues = {
 }
 
 /**
- * 
+ *
  * Form to create new employees
  */
 export default function EmployeeForm() {
@@ -46,7 +46,17 @@ export default function EmployeeForm() {
     control,
     reset,
     formState: { errors },
-  } = useForm<FormValues>()
+  } = useForm<FormValues>({
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      street: "",
+      city: "",
+      state: "",
+      zipCode: null,
+      department: "",
+    },
+  })
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     // add new employee's data to store
@@ -65,20 +75,28 @@ export default function EmployeeForm() {
           zipCode: data.zipCode,
         },
       ])
-      // clean inputs
-      reset({
+    // clean inputs
+    reset(
+      {
         firstName: "",
         lastName: "",
-      }, {
-        keepErrors: true, 
+        street: "",
+        city: "",
+        state: "",
+        zipCode: null,
+        department: "",
+      },
+      {
+        keepErrors: true,
         keepDirty: true,
         keepIsSubmitted: false,
         keepTouched: false,
         keepIsValid: false,
         keepSubmitCount: false,
-      })
-      // show confirm modal
-      toggleModal()
+      }
+    )
+    // show confirm modal
+    toggleModal()
   }
 
   return (
@@ -90,7 +108,7 @@ export default function EmployeeForm() {
           type="text"
           errors={errors.firstName}
           register={register}
-          rules={{ required: 'Please enter a first name.' }}
+          rules={{ required: "Please enter a first name." }}
         />
 
         <Input
@@ -99,7 +117,7 @@ export default function EmployeeForm() {
           type="text"
           errors={errors.lastName}
           register={register}
-          rules={{ required: 'Please enter a last name.' }}
+          rules={{ required: "Please enter a last name." }}
         />
 
         <DateSelect
@@ -143,6 +161,7 @@ export default function EmployeeForm() {
             options={states}
             register={register}
             errors={errors.state}
+            rules={{}}
           />
 
           <Input
@@ -161,13 +180,14 @@ export default function EmployeeForm() {
           options={departments}
           register={register}
           errors={errors.department}
+          rules={{ required: true }}
         />
 
         <button className="main-btn" type="submit">
           Save
         </button>
       </form>
-      <ConfirmModal isOpened={showModal} onClose={hideModal}/>
+      <ConfirmModal isOpened={showModal} onClose={hideModal} />
     </>
   )
 }

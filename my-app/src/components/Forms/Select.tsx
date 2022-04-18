@@ -1,9 +1,9 @@
-function Select({ name, accessName, options, register, errors }) {
+function Select({ name, accessName, options, register, errors, rules }) {
   return (
     <div className="form-group state">
-      <div className="fields">
+      <div className={errors ? "error fields" : "fields"}>
         <label htmlFor={accessName}>{name}</label>
-        <select {...register(accessName, { required: "Please select" })}>
+        <select {...register(accessName, rules)}>
           {options.map((item) => (
             <option
               key={item.abbreviation ? item.abbreviation : item}
@@ -14,7 +14,6 @@ function Select({ name, accessName, options, register, errors }) {
           ))}
         </select>
       </div>
-      {errors && <div className="form-error">{errors.message}</div>}
     </div>
   )
 }
