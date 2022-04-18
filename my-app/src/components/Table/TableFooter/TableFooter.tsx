@@ -14,9 +14,12 @@ function TableFooter({
 }) {
   return (
     <div className="table-footer">
-      <span className="index">
-        Page {pageIndex + 1} / {pageOptions.length} showing to {page[0].index + 1} of {rows.length} entries.
-      </span>
+      {page[0] ? (
+        <span className="index">
+          Page {pageIndex + 1} / {pageOptions.length} showing to{" "}
+          {page[0]?.index + 1} of {rows.length} entries.
+        </span>
+      ) : <span>No employees to display.</span>}
 
       <TableControls
         previousPage={previousPage}

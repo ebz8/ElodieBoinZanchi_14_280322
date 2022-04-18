@@ -88,9 +88,7 @@ function EmployeesTable() {
 
 
   return (
-    <TableContainer className="employees-table">
-      {data ? (
-        <>
+    <TableContainer className="employees-table"> 
           <TableHeader
             pageSize={pageSize}
             setPageSize={setPageSize}
@@ -115,10 +113,6 @@ function EmployeesTable() {
             gotoPage={gotoPage}
             pageCount={pageCount}
           />
-        </>
-      ) : (
-        <p>No employee to display</p>
-      )}
     </TableContainer>
   )
 }
