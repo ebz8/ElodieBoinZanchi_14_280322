@@ -18,7 +18,7 @@ function TableControls({
         onClick={() => previousPage()}
         disabled={!canPreviousPage}
       >
-        {'<'}
+        {"<"}
       </button>
 
       {/* {pageOptions.map((item, index) => {
@@ -50,7 +50,7 @@ function TableControls({
         onClick={() => nextPage()}
         disabled={!canNextPage}
       >
-        {'>'}
+        {">"}
       </button>
       <button className="third-btn" onClick={() => gotoPage(pageCount - 1)}>
         {">>"}
