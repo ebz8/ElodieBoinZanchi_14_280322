@@ -47,13 +47,19 @@
 
   .table-footer {
     display: flex;
+    align-items: flex-end;
     justify-content: space-between;
 
     .index {
       display: flex;
       gap: 0.5rem;
-      
+
+      .folio {
+        align-self: center;
+      }
+
       .entries {
+        align-self: center;
         font-style: italic;
         padding-left: 0.2rem;
       }
@@ -65,8 +71,8 @@
 
       button {
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
         width: 2rem;
         aspect-ratio: 1;
         border-radius: 0.2rem;
