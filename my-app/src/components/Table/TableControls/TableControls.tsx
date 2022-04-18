@@ -37,6 +37,8 @@ function TableControls({
 
       <input
         type="number"
+        min="1"
+        max={pageCount}
         defaultValue={pageIndex + 1}
         onChange={(e) => {
           gotoPage(e.target.value ? Number(e.target.value) - 1 : 0)
