@@ -52,6 +52,14 @@
     .table-controls {
       display: flex;
       gap: 0.5rem;
+
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 2rem;
+        border-radius: .2rem;
+      }
     }
   }
 
