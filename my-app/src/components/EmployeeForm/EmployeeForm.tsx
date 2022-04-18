@@ -36,6 +36,7 @@ type FormValues = {
  * Form to create new employees
  */
 export default function EmployeeForm() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [employees, setEmployees] = useAtom(EmployeesAtom)
   const { isOpened, toggleModal } = useModal()
 
@@ -65,7 +66,7 @@ export default function EmployeeForm() {
         },
       ])
       // clean inputs
-      // reset()
+      reset()
       // show confirm modal
       toggleModal()
   }
