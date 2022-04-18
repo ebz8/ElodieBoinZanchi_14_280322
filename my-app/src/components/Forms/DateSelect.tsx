@@ -9,17 +9,16 @@ function DateSelect({name, accessName, control, errors}) {
         name={accessName}
         control={control}
         defaultValue={undefined}
+        rules={{ required: true }}
         render={({ field }) => (
           <div className={accessName + " form-group"}>
-            <div className="fields">
-              <label htmlFor="birthDate">{name}</label>
+            <div className={errors ? "error fields" : "fields"}>
+              <label htmlFor={accessName}>{name}</label>
               <DatePicker
                 onChange={(e) => field.onChange(e)}
                 selected={field.value}
                 dateFormat="MM/dd/yyyy"
                 id={accessName}
-                // required
-                // aria-invalid={errors.birthDate ? "true" : "false"}
               />
             </div>
             {errors && (

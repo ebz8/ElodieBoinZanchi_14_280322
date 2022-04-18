@@ -10,13 +10,8 @@ function Input({ errors, register, name, accessName, type, rules }) {
           {...register(accessName, rules)}
         />
       </div>
-      {/* {errors && <div className="form-error">{errors.message}</div>} */}
     </div>
   )
 }
 
 export default Input
-
-// export function Input({ register, accessName, ...rest }) {
-//   return <input {...register(accessName)} {...rest} />;
-// }
