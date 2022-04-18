@@ -65,7 +65,7 @@ export default function EmployeeForm() {
         },
       ])
       // clean inputs
-      reset()
+      // reset()
       // show confirm modal
       toggleModal()
   }
