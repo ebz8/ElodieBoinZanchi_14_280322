@@ -14,15 +14,11 @@ import departments from "../../data/departments"
 import { useAtom } from "jotai"
 import { EmployeesAtom } from "../../store/store"
 
-// MODALE
-// import { Modal } from "../Modal/Modal"
-// import { useModal } from "../Modal/useModal"
-
+// modal
 import { useModal } from "@elbaz888/ebz-ui-library"
 import ConfirmModal from "../ConfirmModal/ConfirmModal"
 
-///////////
-
+// types
 type FormValues = {
   firstName: string
   lastName: string
@@ -35,6 +31,10 @@ type FormValues = {
   department: string
 }
 
+/**
+ * 
+ * Form to create new employees
+ */
 export default function EmployeeForm() {
   const [employees, setEmployees] = useAtom(EmployeesAtom)
   const { isOpened, toggleModal } = useModal()
@@ -48,6 +48,7 @@ export default function EmployeeForm() {
   } = useForm<FormValues>()
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
+    // add new employee's data to store
     data &&
       setEmployees((employeesList) => [
         ...employeesList,
@@ -63,7 +64,9 @@ export default function EmployeeForm() {
           zipCode: data.zipCode,
         },
       ])
+      // clean inputs
       reset()
+      // show confirm modal
       toggleModal()
   }
 
