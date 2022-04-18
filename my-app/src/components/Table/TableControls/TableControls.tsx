@@ -43,7 +43,6 @@ function TableControls({
         onChange={(e) => {
           gotoPage(e.target.value ? Number(e.target.value) - 1 : 0)
         }}
-        style={{ maxWidth: '4.5rem' }}
       ></input>
 
       <button
