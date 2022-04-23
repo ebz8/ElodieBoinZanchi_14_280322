@@ -1,8 +1,5 @@
-import { FieldError, FieldValues, Path, UseFormRegister } from "react-hook-form"
+import { FieldError, FieldPath, UseFormRegister } from "react-hook-form"
 import { FormValues } from "../EmployeeForm/EmployeeForm"
-
-// améliorer le accesName: any
-export type FieldPath<TFieldValues extends FieldValues> = Path<TFieldValues>;
 
 const Input = ({
   errors,
@@ -15,7 +12,7 @@ const Input = ({
   errors: FieldError | undefined
   register: UseFormRegister<FormValues>
   name: string
-  accessName: any
+  accessName: FieldPath<FormValues>
   type?: string
   rules?: object
 }) => {

@@ -144,7 +144,6 @@ const EmployeeForm = () => {
             type="text"
             errors={errors.street}
             register={register}
-            rules={{}}
           />
 
           <Input
@@ -153,7 +152,6 @@ const EmployeeForm = () => {
             type="text"
             errors={errors.city}
             register={register}
-            rules={{}}
           />
 
           <Select
@@ -162,7 +160,6 @@ const EmployeeForm = () => {
             options={states}
             register={register}
             errors={errors.state}
-            rules={{}}
           />
 
           <Input
@@ -171,7 +168,6 @@ const EmployeeForm = () => {
             type="number"
             errors={errors.zipCode}
             register={register}
-            rules={{}}
           />
         </fieldset>
 

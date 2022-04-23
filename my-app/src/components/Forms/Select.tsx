@@ -1,4 +1,4 @@
-import { FieldError, UseFormRegister } from "react-hook-form"
+import { FieldError, FieldPath, UseFormRegister } from "react-hook-form"
 import { FormValues } from "../EmployeeForm/EmployeeForm"
 
 function Select({
@@ -10,11 +10,11 @@ function Select({
   rules,
 }: {
   name: string
-  accessName: any
+  accessName: FieldPath<FormValues>
   options: any
   register: UseFormRegister<FormValues>
   errors: FieldError | undefined
-  rules: {}
+  rules?: object
 }) {
   return (
     <div className="form-group state">
