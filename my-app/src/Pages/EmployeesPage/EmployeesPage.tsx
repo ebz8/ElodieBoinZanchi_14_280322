@@ -4,7 +4,7 @@ import EmployeesTable from "../../components/EmployeesTable/EmployeesTable"
 
 function EmployeesPage() {
   return (
-    <PageContainer title="Employees">
+    <PageContainer title="Current Employees">
         <>
           <EmployeesTable />
         </>
