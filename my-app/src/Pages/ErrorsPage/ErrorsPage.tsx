@@ -1,9 +1,10 @@
+import PageContainer from "../../containers/PageContainer/PageContainer"
 
 function ErrorsPage() {
   return (
-    <div>
-      <p>error</p>
-    </div>
+    <PageContainer title="Error">
+      <p>ERROR</p>
+    </PageContainer>
   )
 }
 
