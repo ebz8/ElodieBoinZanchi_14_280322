@@ -1,7 +1,6 @@
 import "./EmployeeForm.scss"
 
 // form
-// import FormContainer from "../../containers/FormContainer/FormContainer"
 import Input from "../Forms/Input"
 import DateSelect from "../Forms/DateSelect"
 import Select from "../Forms/Select"
