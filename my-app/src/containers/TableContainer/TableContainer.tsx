@@ -1,12 +1,9 @@
 
 function TableContainer({children}: any) {
-    // const { loading } = useSelector((state) => state.employees)
 
   return (
     <div className="employees-table">
-        {/* header */}
         {children}
-        {/* footer */}
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import { ReactComponent as SortIcon } from "../../../assets/img/icons/sort-solid.svg"
 import { ReactComponent as SortIconDown } from "../../../assets/img/icons/sort-down-solid.svg"
 import { ReactComponent as SortIconUp } from "../../../assets/img/icons/sort-up-solid.svg"
+import { HeaderGroup, Row, TableBodyPropGetter, TableBodyProps, TablePropGetter, TableProps } from "react-table"
 
 function TableBody({
   getTableProps,
@@ -8,6 +9,12 @@ function TableBody({
   getTableBodyProps,
   prepareRow,
   page,
+}:{
+  getTableProps:(propGetter?: TablePropGetter<object> | undefined) => TableProps
+  headerGroups: HeaderGroup<object>[]
+  getTableBodyProps: (propGetter?: TableBodyPropGetter<object> | undefined) => TableBodyProps
+  prepareRow:(row: Row<object>) => void
+  page: Row<object>[]
 }) {
   return (
     <table {...getTableProps()} className="table-body">

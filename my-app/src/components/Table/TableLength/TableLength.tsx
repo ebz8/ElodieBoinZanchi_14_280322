@@ -1,6 +1,12 @@
 import "./TableLength.scss"
 
-function TableLength({ pageSize, setPageSize }) {
+function TableLength({
+  pageSize,
+  setPageSize,
+}: {
+  pageSize: number
+  setPageSize: (pageSize: number) => void
+}) {
   return (
     <div className="table-length">
       <label htmlFor="tableLength">Show</label>

@@ -2,9 +2,10 @@ import "./TableSearch.scss"
 
 import { useForm, SubmitHandler } from "react-hook-form"
 
-
 export default function TableSearch({
   setGlobalFilter,
+}: {
+  setGlobalFilter: (filterValue: any) => void
 }) {
   const { register, handleSubmit } = useForm({ mode: "onTouched" })
 
@@ -16,7 +17,6 @@ export default function TableSearch({
 
   return (
     <form onChange={handleSubmit(onChange)} className="table-filter">
-      {/* <label>Search: </label> */}
       <input type="search" placeholder="Search" {...register("search")} />
     </form>
   )

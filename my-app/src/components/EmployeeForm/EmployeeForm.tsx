@@ -1,6 +1,7 @@
 import "./EmployeeForm.scss"
 
 // form
+// import FormContainer from "../../containers/FormContainer/FormContainer"
 import Input from "../Forms/Input"
 import DateSelect from "../Forms/DateSelect"
 import Select from "../Forms/Select"
@@ -19,23 +20,23 @@ import { useModal } from "@elbaz888/ebz-ui-library"
 import ConfirmModal from "../ConfirmModal/ConfirmModal"
 
 // types
-type FormValues = {
-  firstName: string
-  lastName: string
-  birthDate: Date | null
-  startDate: Date | null
-  street: string
-  city: string
-  state: string
-  zipCode: number | null
-  department: string
+export type FormValues = {
+  firstName?: string
+  lastName?: string
+  birthDate?: Date | null
+  startDate?: Date | null
+  street?: string
+  city?: string
+  state?: string
+  zipCode?: number | null
+  department?: string
 }
 
 /**
  *
  * Form to create new employees
  */
-export default function EmployeeForm() {
+const EmployeeForm = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [employees, setEmployees] = useAtom(EmployeesAtom)
   const { showModal, hideModal, toggleModal } = useModal()
@@ -191,3 +192,5 @@ export default function EmployeeForm() {
     </>
   )
 }
+
+export default EmployeeForm

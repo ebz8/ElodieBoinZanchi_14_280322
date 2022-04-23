@@ -5,13 +5,15 @@ function TableHeader({
   pageSize,
   setPageSize,
   setGlobalFilter,
+}: {
+  pageSize: number
+  setPageSize: (pageSize: number) => void
+  setGlobalFilter: (filterValue: any) => void
 }) {
   return (
     <div className="table-header">
       <TableLength pageSize={pageSize} setPageSize={setPageSize} />
-      <TableFilter
-        setGlobalFilter={setGlobalFilter}
-      />
+      <TableFilter setGlobalFilter={setGlobalFilter} />
     </div>
   )
 }

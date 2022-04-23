@@ -7,6 +7,15 @@ function TableControls({
   gotoPage,
   pageCount,
   pageIndex,
+}: {
+  previousPage: () => void
+  canPreviousPage: boolean
+  nextPage: () => void
+  canNextPage: boolean
+  pageOptions: number[]
+  gotoPage: (updater: number | ((pageIndex: number) => number)) => void
+  pageCount: number
+  pageIndex: number
 }) {
   return (
     <div className="table-controls">
