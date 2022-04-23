@@ -3,7 +3,7 @@ import PageContainer from "../../containers/PageContainer/PageContainer"
 
 function CreateEmployeePage() {
   return (
-    <PageContainer>
+    <PageContainer title="Create Employee">
         <EmployeeForm />
     </PageContainer>
   )
