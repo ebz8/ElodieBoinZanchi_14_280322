@@ -6,6 +6,7 @@ function TableFooter({
   pageOptions,
   rows,
   page,
+  pageSize,
   previousPage,
   canPreviousPage,
   nextPage,
@@ -23,7 +24,11 @@ function TableFooter({
   canNextPage: boolean
   gotoPage: (updater: number | ((pageIndex: number) => number)) => void
   pageCount: number
+  pageSize: number
 }) {
+  const firstRowNumber: number = pageIndex * pageSize + 1
+  const lastRowNumber: number = firstRowNumber + page.length - 1
+
   return (
     <div className="table-footer">
       {page[0] ? (
@@ -32,8 +37,7 @@ function TableFooter({
             page {pageIndex + 1} / {pageOptions.length}{" "}
           </span>
           <span className="entries">
-            showing {page[0]?.index + 1} to {page[page.length - 1]?.index + 1}{" "}
-            of {rows.length} entries
+            showing {firstRowNumber} to {lastRowNumber} of {rows.length} entries
           </span>
         </div>
       ) : (
