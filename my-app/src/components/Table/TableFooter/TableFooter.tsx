@@ -37,7 +37,8 @@ function TableFooter({
             page {pageIndex + 1} / {pageOptions.length}{" "}
           </span>
           <span className="entries">
-            showing {firstRowNumber} to {lastRowNumber} of {rows.length} entries
+            showing {firstRowNumber} to {lastRowNumber} of {rows.length}{" "}
+            {rows.length > 1 ? "entries" : "entry"}
           </span>
         </div>
       ) : (
