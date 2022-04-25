@@ -30,20 +30,8 @@ function TableControls({
         {"<"}
       </button>
 
-      {/* {pageOptions.map((item, index) => {
-          if (index < 5) {
-            return (
-              <button
-                className={item === pageIndex ? "secondary-btn --active" : "secondary-btn"}
-                key={item}
-                onClick={() => gotoPage(item)}
-              >
-                {item + 1}
-              </button>
-            )
-          }
-        })} */}
-      <label htmlFor="selec-page-number">
+      <label htmlFor="select-page-number">
+      </label>
         <input
           type="number"
           id="select-page-number"
@@ -54,7 +42,6 @@ function TableControls({
             gotoPage(e.target.value ? Number(e.target.value) - 1 : 0)
           }}
         />
-      </label>
 
       <button
         className="secondary-btn"
