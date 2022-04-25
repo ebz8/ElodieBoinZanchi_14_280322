@@ -20,15 +20,15 @@ import ConfirmModal from "../ConfirmModal/ConfirmModal"
 
 // types
 export type FormValues = {
-  firstName?: string
-  lastName?: string
-  birthDate?: Date | null
-  startDate?: Date | null
+  firstName: string
+  lastName: string
+  birthDate: Date | null
+  startDate: Date | null
   street?: string
   city?: string
   state?: string
   zipCode?: number | null
-  department?: string
+  department: string
 }
 
 /**

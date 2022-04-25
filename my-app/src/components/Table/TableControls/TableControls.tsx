@@ -30,18 +30,17 @@ function TableControls({
         {"<"}
       </button>
 
-      <label htmlFor="select-page-number">
-      </label>
-        <input
-          type="number"
-          id="select-page-number"
-          min="1"
-          max={pageCount}
-          defaultValue={pageIndex + 1}
-          onChange={(e) => {
-            gotoPage(e.target.value ? Number(e.target.value) - 1 : 0)
-          }}
-        />
+      <label htmlFor="select-page-number" />
+      <input
+        type="number"
+        id="select-page-number"
+        min="1"
+        max={pageCount}
+        defaultValue={pageIndex + 1}
+        onChange={(e) => {
+          gotoPage(e.target.value ? Number(e.target.value) - 1 : 0)
+        }}
+      />
 
       <button
         className="secondary-btn"
