@@ -34,7 +34,7 @@ function DateSelect({
               id={accessName}
             />
           </div>
-          {errors && <div className="form-error">{errors.message}</div>}
+          {errors && <div className="form-error sr-only">{errors.message}</div>}
         </div>
       )}
     />
