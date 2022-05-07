@@ -1,0 +1,15 @@
+@import "../../assets/style/mixins.scss";
+
+#modal {
+  min-width: 20rem;
+
+  button {
+    background-color: $mainColor;
+    color: $neutralLight;
+    
+    &:hover {
+      background-color: $secondaryColor;
+      color: $mainColor;
+    }
+  }
+}
