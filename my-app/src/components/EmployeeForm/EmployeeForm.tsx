@@ -15,7 +15,7 @@ import { useAtom } from "jotai"
 import { EmployeesAtom } from "../../store/store"
 
 // modal
-import { useModal } from "@elbaz888/ebz-ui-library"
+import { useModal } from "@elbaz888/ebz-react-library"
 import ConfirmModal from "../ConfirmModal/ConfirmModal"
 
 // types

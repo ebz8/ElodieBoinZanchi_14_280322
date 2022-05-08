@@ -1,4 +1,4 @@
-import { Modal } from "@elbaz888/ebz-ui-library"
+import { Modal } from "@elbaz888/ebz-react-library"
 import "./ConfirmModal.scss"
 
 function ConfirmModal({
